@@ -6,13 +6,15 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 04:01:59 by dmontema          #+#    #+#             */
-/*   Updated: 2022/05/05 17:26:44 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/05/05 18:18:27 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.h"
 
 #include <iostream>
+
+Contact::Contact(){}
 
 Contact::Contact(std::string first, std::string last, std::string nickname, std::string number, std::string secret)
 {
