@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 18:07:15 by dmontema          #+#    #+#             */
-/*   Updated: 2022/05/06 18:17:12 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/05/06 22:37:16 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,27 @@ void Phonebook::addContact(std::string first, std::string last, std::string nick
 	count = (count + 1) % 8;
 }
 
+std::string Phonebook::get_trunc_str(std::string str)
+{
+	if (str.size() > 10)
+		return (str.substr(0, 9) + ".");
+	return (str);
+}
+
 void Phonebook::displayContact(int index)
 {
 	if (index >= 0 && index <= 7)
 	{
 		if (contactExist(index))
 		{
-			std::cout << "Contact #" << index + 1 << std::endl;
-			std::cout << contacts[index].get_first() << " " << contacts[index].get_last() << " (" << contacts[index].get_nickname() << "):\n";
-			std::cout << contacts[index].get_number() << std::endl;
-			std::cout << "Pssht: " << contacts[index].get_secret() << std::endl;
+			// std::cout << "Contact #" << index + 1 << std::endl;
+			// std::cout << contacts[index].get_first() << " " << contacts[index].get_last() << " (" << contacts[index].get_nickname() << "):\n";
+			// std::cout << contacts[index].get_number() << std::endl;
+			// std::cout << "Pssht: " << contacts[index].get_secret() << std::endl;
+			std::cout << std::right << std::setw(10) << index + 1 << " | "; 
+			std::cout << std::right << std::setw(10) << get_trunc_str(contacts[index].get_first()) << " | "; 
+			std::cout << std::right << std::setw(10) << get_trunc_str(contacts[index].get_last()) << " | "; 
+			std::cout << std::right << std::setw(10) << get_trunc_str(contacts[index].get_nickname()) << std::endl;
 		}
 		else
 			std::cout << "Contact doesn't exist.\n";
