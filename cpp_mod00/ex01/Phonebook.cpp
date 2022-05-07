@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 18:07:15 by dmontema          #+#    #+#             */
-/*   Updated: 2022/05/07 17:47:04 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/05/07 18:09:59 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,6 @@
 #include <iostream>
 #include <iomanip>
 #include <array>
-
-Phonebook::Phonebook()
-{
-	count = 0;
-}
 
 bool Phonebook::contactExist(int index)
 {
@@ -33,6 +28,18 @@ bool Phonebook::contactExist(int index)
 	return (true);
 }
 
+std::string Phonebook::get_trunc_str(std::string str)
+{
+	if (str.size() > 10)
+		return (str.substr(0, 9) + ".");
+	return (str);
+}
+
+Phonebook::Phonebook()
+{
+	count = 0;
+}
+
 void Phonebook::addContact(std::string first, std::string last, std::string nickname, std::string number, std::string secret)
 {
 	contacts[count].set_first(first);
@@ -41,30 +48,6 @@ void Phonebook::addContact(std::string first, std::string last, std::string nick
 	contacts[count].set_number(number);
 	contacts[count].set_secret(secret);
 	count = (count + 1) % 8;
-}
-
-std::string Phonebook::get_trunc_str(std::string str)
-{
-	if (str.size() > 10)
-		return (str.substr(0, 9) + ".");
-	return (str);
-}
-
-void Phonebook::displayContacts()
-{
-	std::cout << std::endl;
-	std::cout << std::right << std::setw(10) << "INDEX" << " | "; 
-	std::cout << std::right << std::setw(10) << "FIRST NAME" << " | "; 
-	std::cout << std::right << std::setw(10) << "LAST NAME" << " | "; 
-	std::cout << std::right << std::setw(10) << "NICKNAME" << std::endl;
-	for (int i = 0; contactExist(i); i++)
-	{
-		std::cout << std::right << std::setw(10) << i + 1 << " | "; 
-		std::cout << std::right << std::setw(10) << get_trunc_str(contacts[i].get_first()) << " | "; 
-		std::cout << std::right << std::setw(10) << get_trunc_str(contacts[i].get_last()) << " | "; 
-		std::cout << std::right << std::setw(10) << get_trunc_str(contacts[i].get_nickname()) << std::endl;
-	}
-	std::cout << std::endl;
 }
 
 void Phonebook::getContact(int index)
@@ -87,7 +70,31 @@ void Phonebook::getContact(int index)
 		std::cout << "\nIndex out of range!\n\n";
 }
 
-void Phonebook::display_phonebook(void)
+bool Phonebook::empty()
+{
+	if (contactExist(0))
+		return (false);
+	return (true);
+}
+
+void Phonebook::displayContacts()
+{
+	std::cout << std::endl;
+	std::cout << std::right << std::setw(10) << "INDEX" << " | "; 
+	std::cout << std::right << std::setw(10) << "FIRST NAME" << " | "; 
+	std::cout << std::right << std::setw(10) << "LAST NAME" << " | "; 
+	std::cout << std::right << std::setw(10) << "NICKNAME" << std::endl;
+	for (int i = 0; contactExist(i); i++)
+	{
+		std::cout << std::right << std::setw(10) << i + 1 << " | "; 
+		std::cout << std::right << std::setw(10) << get_trunc_str(contacts[i].get_first()) << " | "; 
+		std::cout << std::right << std::setw(10) << get_trunc_str(contacts[i].get_last()) << " | "; 
+		std::cout << std::right << std::setw(10) << get_trunc_str(contacts[i].get_nickname()) << std::endl;
+	}
+	std::cout << std::endl;
+}
+
+void Phonebook::display_prompt(void)
 {
 	std::cout << std::setw(65) << " ________________________________________________________________" << std::endl;
 	std::cout << std::setw(65) << "|                                                                |" << std::endl;
@@ -111,11 +118,4 @@ void Phonebook::display_phonebook(void)
 	std::cout << std::setw(65) << "|                   ~~> to exit the phonebook                    |" << std::endl;
 	std::cout << std::setw(65) << "|                                                                |" << std::endl;
 	std::cout << std::setw(65) << "|________________________________________________________________|" << std::endl;
-}
-
-bool Phonebook::empty()
-{
-	if (contactExist(0))
-		return (false);
-	return (true);
 }

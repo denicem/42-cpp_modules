@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 04:11:25 by dmontema          #+#    #+#             */
-/*   Updated: 2022/05/07 17:44:50 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/05/07 18:08:15 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,25 @@ void addContact(Phonebook& pb)
 {
 	std::string first, last, nickname, number, secret;
 
-	std::cout << "First Name: ";
-	getline(std::cin, first);
+	std::cout << "First Name\n> ";
+	while (getline(std::cin, first) && first.empty())
+		std::cout << "> ";
 
-	std::cout << "Last Name: ";
-	getline(std::cin, last);
+	std::cout << "Last Name\n> ";
+	while (getline(std::cin, last) && last.empty())
+		std::cout << "> ";
 
-	std::cout << "Nickname: ";
-	getline(std::cin, nickname);
+	std::cout << "Nickname\n> ";
+	while (getline(std::cin, nickname) && nickname.empty())
+		std::cout << "> ";
 
-	std::cout << "Phone number: ";
-	getline(std::cin, number);
+	std::cout << "Phone number\n> ";
+	while (getline(std::cin, number) && number.empty())
+		std::cout << "> ";
 
-	std::cout << "Tell me the biggest secret from this person: ";
-	getline(std::cin, secret);
+	std::cout << "Tell me the biggest secret from this person\n> ";
+	while (getline(std::cin, secret) && secret.empty())
+		std::cout << "> ";
 
 	pb.addContact(first, last, nickname, number, secret);
 	std::cout << "Successfully added contact to Phonebook.\n";
@@ -49,9 +54,19 @@ void searchContact(Phonebook& pb)
 	else
 	{
 		pb.displayContacts();
-		std::cout << "Enter a number between 1-8: ";
-		while (getline(std::cin, str_nbr) && str_nbr.find_first_not_of("0123456789") != std::string::npos)
-			std::cout << "Only numeric argument please.\n";
+		std::cout << "Enter a number between 1-8.\n> ";
+		while (getline(std::cin, str_nbr))
+		{
+			if (str_nbr.empty())
+			{
+				std::cout << "> ";
+				continue;
+			}
+			if (str_nbr.find_first_not_of("0123456789") != std::string::npos)
+				std::cout << "Only numeric argument please.\n";
+			else
+				break;
+		}
 		index = stoi(str_nbr);
 		pb.getContact(index - 1);
 	}
@@ -64,7 +79,7 @@ int main()
 
 	pb.addContact("DNC", "M", "dncmon", "1234", "Pssht!");
 	pb.addContact("EMS", "V", "emvuc", "5678", "huhu!");
-	pb.display_phonebook();
+	pb.display_prompt();
 	std::cout << "> ";
 	while (getline(std::cin, input) && input.compare("EXIT"))
 	{
@@ -83,7 +98,7 @@ int main()
 			std::cout << "> ";
 			continue;
 		}
-		pb.display_phonebook();
+		pb.display_prompt();
 		std::cout << "> ";
 	}
 	std::cout << "\nGOODBYE.\n";
