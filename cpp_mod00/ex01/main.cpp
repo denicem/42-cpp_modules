@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 04:11:25 by dmontema          #+#    #+#             */
-/*   Updated: 2022/05/07 18:08:15 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/05/07 18:44:29 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
+#include <stdlib.h>
 
 void addContact(Phonebook& pb)
 {
@@ -67,7 +68,7 @@ void searchContact(Phonebook& pb)
 			else
 				break;
 		}
-		index = stoi(str_nbr);
+		index = atoi(str_nbr.c_str());
 		pb.getContact(index - 1);
 	}
 }
