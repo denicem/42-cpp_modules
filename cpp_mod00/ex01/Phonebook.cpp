@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 18:07:15 by dmontema          #+#    #+#             */
-/*   Updated: 2022/05/07 15:31:17 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/05/07 17:47:04 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,11 @@ std::string Phonebook::get_trunc_str(std::string str)
 
 void Phonebook::displayContacts()
 {
+	std::cout << std::endl;
+	std::cout << std::right << std::setw(10) << "INDEX" << " | "; 
+	std::cout << std::right << std::setw(10) << "FIRST NAME" << " | "; 
+	std::cout << std::right << std::setw(10) << "LAST NAME" << " | "; 
+	std::cout << std::right << std::setw(10) << "NICKNAME" << std::endl;
 	for (int i = 0; contactExist(i); i++)
 	{
 		std::cout << std::right << std::setw(10) << i + 1 << " | "; 
@@ -59,6 +64,7 @@ void Phonebook::displayContacts()
 		std::cout << std::right << std::setw(10) << get_trunc_str(contacts[i].get_last()) << " | "; 
 		std::cout << std::right << std::setw(10) << get_trunc_str(contacts[i].get_nickname()) << std::endl;
 	}
+	std::cout << std::endl;
 }
 
 void Phonebook::getContact(int index)
@@ -67,16 +73,18 @@ void Phonebook::getContact(int index)
 	{
 		if (contactExist(index))
 		{
-			std::cout << std::right << std::setw(10) << index + 1 << " | "; 
-			std::cout << std::right << std::setw(10) << get_trunc_str(contacts[index].get_first()) << " | "; 
-			std::cout << std::right << std::setw(10) << get_trunc_str(contacts[index].get_last()) << " | "; 
-			std::cout << std::right << std::setw(10) << get_trunc_str(contacts[index].get_nickname()) << std::endl;
+			std::cout << std::endl;
+			std::cout << "First Name: " << contacts[index].get_first() << std::endl;
+			std::cout << "Last Name: " << contacts[index].get_last() << std::endl;
+			std::cout << "Nickname: " << contacts[index].get_nickname() << std::endl;
+			std::cout << "Phone Number: " << contacts[index].get_number() << std::endl;
+			std::cout << "Darkest secret: " << contacts[index].get_secret() << std::endl << std::endl;
 		}
 		else
-			std::cout << "Contact doesn't exist.\n";
+			std::cout << "\nContact doesn't exist.\n\n";
 	}
 	else
-		std::cout << "Index out of range!\n";
+		std::cout << "\nIndex out of range!\n\n";
 }
 
 void Phonebook::display_phonebook(void)
