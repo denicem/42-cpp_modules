@@ -11,6 +11,13 @@
 /* ************************************************************************** */
 
 #include "Account.hpp"
+#include <ctime>
+#include <iostream>
+
+int Account::_nbAccounts = 0;
+int Account::_totalAmount = 0;
+int Account::_totalNbDeposits = 0;
+int Account::_totalNbWithdrawals = 0;
 
 int Account::getNbAccounts()
 {
@@ -39,6 +46,18 @@ Account::Account(int initial_deposit)
 	_totalAmount += this->_amount;
 	this->_nbDeposits = 0;
 	this->_nbWithdrawals = 0;
+
+	_displayTimestamp();
+	std::cout << "index:" << this->_accountIndex << ";amount:" << this->_amount << ";created\n";
+}
+
+Account::~Account()
+{
+	_totalAmount -= this->_amount;
+	_nbAccounts--;
+
+	_displayTimestamp();
+	std::cout << "index:" << this->_accountIndex << ";amount:" << this->_amount << ";closed\n";
 }
 
 void Account::makeDeposit(int deposit)
@@ -67,3 +86,28 @@ int Account::checkAmount() const
 	return (this->_amount);
 }
 
+void Account::displayAccountsInfos()
+{
+	_displayTimestamp();
+	std::cout << "accounts:" << _nbAccounts << ";total:" << _totalAmount << ";deposits:" << _totalNbDeposits << ";withdrawals:" << _totalNbWithdrawals << std::endl;
+}
+
+void Account::displayStatus() const
+{
+	_displayTimestamp();
+	std::cout << "index:" << this->_accountIndex << ";total:" << this->_amount << ";deposits:" << this->_nbDeposits << ";withdrawals:" << this->_nbWithdrawals << std::endl;
+}
+
+void Account::_displayTimestamp()
+{
+	time_t now = time(0);
+	struct tm tstruct;
+	char curr_t[50]; //FIXME: don't like this method..
+
+	tstruct = *localtime(&now);
+	// https://en.cppreference.com/w/cpp/chrono/c/strftime
+	// https://stackoverflow.com/questions/997946/how-to-get-current-time-and-date-in-c
+	strftime(curr_t, sizeof(curr_t), "[%Y%m%d_%H%M%S]", &tstruct);
+
+	std::cout << curr_t << " ";
+}
