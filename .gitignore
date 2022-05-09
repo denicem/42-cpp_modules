@@ -2,3 +2,4 @@
 *.out
 subjects/*
 .vscode
+Makefile_template
