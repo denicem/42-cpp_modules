@@ -10,11 +10,12 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	megaphone
+NAME	= account
 
-SRCS	=	megaphone.cpp
+INCS		=	-I./inc
+SRCS		=	src/Account.cpp src/tests.cpp
 
-OBJS	=	$(SRCS:.cpp=.o)
+OBJS		=	$(SRCS:.cpp=.o)
 
 CC		=	c++
 CFLAGS	=	-Wall -Wextra -Werror -std=c++98
@@ -34,13 +35,12 @@ RESET	=	\033[m
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@printf "$(CYAN)Installing megaphone...$(RESET)\n"
-	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	@printf "$(CYAN)Installing Account...$(RESET)\n"
+	@$(CC) $(CFLAGS) $(INCS) $(OBJS) -o $(NAME)
 	@printf "$(GREEN)\tCOMPLETE!$(RESET)\n"
 
 .c.o:
-	@$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
-
+	@$(CC) $(CFLAGS) $(INCS) -c $< -o $(<:.c=.o)
 
 clean:
 	@rm -f $(OBJS)

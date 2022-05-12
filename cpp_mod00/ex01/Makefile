@@ -5,16 +5,18 @@
 #                                                     +:+ +:+         +:+      #
 #    By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/05/09 16:08:46 by dmontema          #+#    #+#              #
-#    Updated: 2022/05/09 16:08:46 by dmontema         ###   ########.fr        #
+#    Created: 2022/05/12 14:42:19 by dmontema          #+#    #+#              #
+#    Updated: 2022/05/12 14:42:19 by dmontema         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	megaphone
+NAME	=	phone
 
-SRCS	=	megaphone.cpp
+SRCS	=	src/Contact.cpp src/Phonebook.cpp src/main.cpp
 
 OBJS	=	$(SRCS:.cpp=.o)
+
+INC		=	-I./inc
 
 CC		=	c++
 CFLAGS	=	-Wall -Wextra -Werror -std=c++98
@@ -34,12 +36,12 @@ RESET	=	\033[m
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@printf "$(CYAN)Installing megaphone...$(RESET)\n"
+	@printf "$(CYAN)Installing ****...$(RESET)\n"
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 	@printf "$(GREEN)\tCOMPLETE!$(RESET)\n"
 
 .c.o:
-	@$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
+	@$(CC) $(CFLAGS) $(INC) -c $< -o $(<:.c=.o)
 
 
 clean:
