@@ -19,5 +19,8 @@ int main()
 	zptr = newZombie("SHAWIE");
 	zptr->announce();
 	randomChump("ABBY");
+	delete zptr;
 	return (0);
 }
+
+// TODO: determine in which case it is to allocate mem on the stack or heap.

@@ -12,8 +12,7 @@
 
 #include "../inc/Zombie.h"
 
-Zombie* newZombie(std::string name) // FIXME: not sure if static var is correct here?
+Zombie* newZombie(std::string name) 
 {
-	static Zombie zombie(name);
-	return (&zombie);
+	return (new Zombie(name));
 }
