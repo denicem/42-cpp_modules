@@ -12,6 +12,8 @@
 
 #include "../inc/Zombie.h"
 
+#include <iostream>
+
 Zombie* zombieHorde(int N, std::string name)
 {
 	Zombie *horde = new Zombie[N];
@@ -19,5 +21,3 @@ Zombie* zombieHorde(int N, std::string name)
 		horde[i].setName(name);
 	return (horde);
 }
-
-// FIXME: not sure if this is the right practice..

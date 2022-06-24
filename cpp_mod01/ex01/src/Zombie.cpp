@@ -13,7 +13,10 @@
 #include "../inc/Zombie.h"
 #include <iostream>
 
-Zombie::Zombie(){}
+Zombie::Zombie()
+{
+	this->name = "Unknown";
+}
 
 Zombie::Zombie(std::string name)
 {
@@ -21,7 +24,7 @@ Zombie::Zombie(std::string name)
 }
 Zombie::~Zombie()
 {
-	std::cout << this->name << std::endl;
+	std::cout <<  this->name << std::endl;
 }
 
 void Zombie::setName(std::string name)

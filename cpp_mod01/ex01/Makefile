@@ -34,7 +34,7 @@ RESET	=	\033[m
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@printf "$(CYAN)Installing ****...$(RESET)\n"
+	@printf "$(CYAN)Installing Zombie Horde...$(RESET)\n"
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 	@printf "$(GREEN)\tCOMPLETE!$(RESET)\n"
 
