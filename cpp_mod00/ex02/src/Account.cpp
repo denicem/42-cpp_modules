@@ -51,6 +51,12 @@ Account::Account(int initial_deposit)
 	std::cout << "index:" << this->_accountIndex << ";amount:" << this->_amount << ";created\n";
 }
 
+void Account::displayAccountsInfos()
+{
+	_displayTimestamp();
+	std::cout << "accounts:" << _nbAccounts << ";total:" << _totalAmount << ";deposits:" << _totalNbDeposits << ";withdrawals:" << _totalNbWithdrawals << std::endl;
+}
+
 Account::~Account()
 {
 	_totalAmount -= this->_amount;
@@ -62,22 +68,29 @@ Account::~Account()
 
 void Account::makeDeposit(int deposit)
 {
+	int p_amount = this->_amount;
 	this->_amount += deposit;
 	this->_nbDeposits++;
 	_totalAmount += deposit;
 	_totalNbDeposits++;
+	_displayTimestamp();
+	std::cout << "index:" << this->_accountIndex << ";p_amount:" << p_amount << ";deposit:" << deposit << ";amount:" << this->_amount << ";nb_deposits:" << this->_nbDeposits << std::endl;
 }
 
 bool Account::makeWithdrawal(int withdrawal)
 {
+	_displayTimestamp();
 	if (this->checkAmount() > 0 && (_amount - withdrawal) >= 0)
 	{
+		int p_amount = this->_amount;
 		this->_amount -= withdrawal;
 		this->_nbWithdrawals++;
 		_totalAmount -= withdrawal;
 		_totalNbWithdrawals++;
+		std::cout << "index:" << this->_accountIndex << ";p_amount:" << p_amount << ";withdrawal:" << withdrawal << ";amount:" << this->_amount << ";nb_withdrawals:" << this->_nbDeposits << std::endl;
 		return (true);
 	}
+	std::cout << "index:" << this->_accountIndex << ";p_amount:" << this->_amount << ";withdrawal:" << "refused\n";
 	return (false);
 }
 
@@ -86,27 +99,19 @@ int Account::checkAmount() const
 	return (this->_amount);
 }
 
-void Account::displayAccountsInfos()
-{
-	_displayTimestamp();
-	std::cout << "accounts:" << _nbAccounts << ";total:" << _totalAmount << ";deposits:" << _totalNbDeposits << ";withdrawals:" << _totalNbWithdrawals << std::endl;
-}
-
 void Account::displayStatus() const
 {
 	_displayTimestamp();
-	std::cout << "index:" << this->_accountIndex << ";total:" << this->_amount << ";deposits:" << this->_nbDeposits << ";withdrawals:" << this->_nbWithdrawals << std::endl;
+	std::cout << "index:" << this->_accountIndex << ";amount:" << this->_amount << ";deposits:" << this->_nbDeposits << ";withdrawals:" << this->_nbWithdrawals << std::endl;
 }
 
 void Account::_displayTimestamp()
 {
 	time_t now = time(0);
 	struct tm tstruct;
-	char curr_t[50]; //FIXME: don't like this method..
+	char curr_t[18];
 
 	tstruct = *localtime(&now);
-	// https://en.cppreference.com/w/cpp/chrono/c/strftime
-	// https://stackoverflow.com/questions/997946/how-to-get-current-time-and-date-in-c
 	strftime(curr_t, sizeof(curr_t), "[%Y%m%d_%H%M%S]", &tstruct);
 
 	std::cout << curr_t << " ";

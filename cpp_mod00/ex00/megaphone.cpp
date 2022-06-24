@@ -12,7 +12,7 @@
 
 #include <iostream>
 
-static int to_Upper(int c)
+static char to_Upper(char c)
 {
 	if (c >= 'a' && c <= 'z')
 		c = (c - 'a') + 'A';
@@ -26,7 +26,7 @@ int	main(int argc, char const *argv[])
 		for (int i = 1; argv[i]; i++)
 		{
 			for (int j = 0; argv[i][j]; j++)
-				std::cout << static_cast<char>(to_Upper(argv[i][j])); // normal type casting allowed?
+				std::cout << to_Upper(argv[i][j]); // normal type casting allowed?
 		}
 		std::cout << std::endl;
 	}

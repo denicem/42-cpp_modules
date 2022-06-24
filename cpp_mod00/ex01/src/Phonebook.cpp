@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+ /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   Phonebook.cpp                                      :+:      :+:    :+:   */
@@ -84,7 +84,7 @@ void Phonebook::displayContacts()
 	std::cout << std::right << std::setw(10) << "FIRST NAME" << " | "; 
 	std::cout << std::right << std::setw(10) << "LAST NAME" << " | "; 
 	std::cout << std::right << std::setw(10) << "NICKNAME" << std::endl;
-	for (int i = 0; contactExist(i); i++)
+	for (int i = 0; i < 8 && contactExist(i); i++)
 	{
 		std::cout << std::right << std::setw(10) << i + 1 << " | "; 
 		std::cout << std::right << std::setw(10) << get_trunc_str(contacts[i].get_first()) << " | "; 

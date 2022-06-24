@@ -49,9 +49,8 @@ void searchContact(Phonebook& pb)
 {
 	std::string str_nbr;
 	int	index;
-
 	if (pb.empty())
-		std::cout << "Phonebook is empty. Try to add some contacts.\n";
+		std::cout << "Phonebook is empty. Try to add some contacts first.\n";
 	else
 	{
 		pb.displayContacts();
@@ -80,6 +79,12 @@ int main()
 
 	pb.addContact("DNC", "M", "dncmon", "1234", "Pssht!");
 	pb.addContact("EMS", "V", "emvuc", "5678", "huhu!");
+	pb.addContact("FABIBI", "Quist", "Rami", "143534", "Hehe");
+	pb.addContact("Olawale", "Ipadeola", "Wale", "1358", "Whaaat!");
+	pb.addContact("DENICEGEORGETTEZEN", "MONTEMAYOR", "DGM", "20111995", "ohwow!");
+	pb.addContact("IM", "NAYEON", "NY", "3547", "Bunny girl.");
+	pb.addContact("Randolf", "Bueno", "mnkeybiz", "13546", "prod by BRANDIIII");
+	pb.addContact("Ralph Daniel", "Pacheco", "Pach", "5435786", "PACHIIII");
 	pb.display_prompt();
 	std::cout << "> ";
 	while (getline(std::cin, input) && input.compare("EXIT"))

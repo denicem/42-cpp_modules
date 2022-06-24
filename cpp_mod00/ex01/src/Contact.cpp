@@ -20,7 +20,7 @@ Contact::Contact(std::string first, std::string last, std::string nickname, std:
 {
 	if (first.empty() || last.empty() || nickname.empty() || number.empty() || secret.empty())
 	{
-		std::cout << "All of the fields have to be empty!\n";
+		std::cout << "All of the fields must not be empty.\n";
 		return ;
 	}
 	this->first = first;
