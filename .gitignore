@@ -1,7 +1,5 @@
 *.exe
 *.out
 *.o
-subjects/*
 .vscode
-Makefile_template
-cpp_wiki/*
+
