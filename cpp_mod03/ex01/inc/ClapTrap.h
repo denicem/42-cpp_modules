@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 18:14:56 by dmontema          #+#    #+#             */
-/*   Updated: 2022/06/26 21:33:33 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/06/27 18:31:32 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ public:
 	void attack(const std::string&);
 	void takeDamage(unsigned int);
 	void beRepaired(unsigned int);
+
+	void print_stats();
 
 	std::string getName();
 	int getHP();

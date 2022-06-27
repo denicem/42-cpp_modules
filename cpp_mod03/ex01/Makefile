@@ -38,3 +38,6 @@ fclean: clean
 	@rm -f $(NAME)
 
 re: fclean all
+
+print_msg_install:
+	@printf "$(CYAN)Installing ScavTrap...$(RESET)\n"

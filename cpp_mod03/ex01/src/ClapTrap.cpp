@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 18:19:31 by dmontema          #+#    #+#             */
-/*   Updated: 2022/06/26 23:13:13 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/06/27 18:34:48 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ ClapTrap::ClapTrap(): name("NONAME"), hp(10), ep(10), ad(0)
 ClapTrap::ClapTrap(const ClapTrap& other)
 {
 	*this = other;
+	std::cout << "ClapTrap " << this->name << " created (Copy)\n";
 }
 
 ClapTrap & ClapTrap::operator=(const ClapTrap &other)
@@ -70,6 +71,14 @@ void ClapTrap::beRepaired(unsigned int rp)
 		this->hp += rp;
 		std::cout << "ClapTrap " << this->name << " repaired itself by " << rp << " hp!\n";
 	}
+}
+
+void ClapTrap::print_stats()
+{
+	std::cout << "Name:\t" << this->name << std::endl;
+	std::cout << "HP:\t" << this->hp << std::endl;
+	std::cout << "EP:\t" << this->ep << std::endl;
+	std::cout << "AD:\t" << this->ad << std::endl;
 }
 
 //

@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 18:54:42 by dmontema          #+#    #+#             */
-/*   Updated: 2022/06/26 23:26:04 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/06/27 18:46:33 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ ScavTrap::ScavTrap()
 	std::cout << "ScavTrap NONAME created (Default).\n";
 }
 
-ScavTrap::ScavTrap(const ScavTrap &other)
+ScavTrap::ScavTrap(const ScavTrap &other): ClapTrap(other)
 {
 	*this = other;
 	std::cout << "ScavTrap " << this->getName() << " created (Copy)\n";
@@ -33,7 +33,7 @@ ScavTrap::~ScavTrap()
 	std::cout << "ScavTrap " << this->getName() << " destroyed.\n";
 }
 
-ScavTrap::ScavTrap(std::string name)
+ScavTrap::ScavTrap(std::string name): ClapTrap(name)
 {
 	this->setName(name);
 	this->setHP(100);
