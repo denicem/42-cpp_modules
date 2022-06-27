@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 18:19:31 by dmontema          #+#    #+#             */
-/*   Updated: 2022/06/26 23:13:29 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/06/27 18:20:55 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ ClapTrap::ClapTrap(): name("NONAME"), hp(10), ep(10), ad(0)
 ClapTrap::ClapTrap(const ClapTrap& other)
 {
 	*this = other;
+	std::cout << "ClapTrap " << this->name << " created (Copy)\n";
 }
 
 ClapTrap & ClapTrap::operator=(const ClapTrap &other)
