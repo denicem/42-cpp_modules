@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 18:19:31 by dmontema          #+#    #+#             */
-/*   Updated: 2022/06/27 18:34:48 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/06/27 20:39:47 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,81 +27,85 @@ ClapTrap::ClapTrap(const ClapTrap& other)
 
 ClapTrap & ClapTrap::operator=(const ClapTrap &other)
 {
-	this->name = other.name;
-	this->hp = other.hp;
-	this->ep = other.ep;
-	this->ad = other.ad;
+	if (this != &other)
+	{
+		this->name = other.name;
+		this->hp = other.hp;
+		this->ep = other.ep;
+		this->ad = other.ad;
+	}
 	return (*this);
 }
 
 ClapTrap::~ClapTrap()
 {
 	std::cout << "ClapTrap " << this->name << " destroyed.\n";
-
 }
+
+/*
+** --------------------------------- ---------------------------------
+*/
 
 ClapTrap::ClapTrap(std::string name): name(name), hp(10), ep(10), ad(0)
 {
-	std::cout << "ClapTrap " << name << " created.\n";
+	std::cout << "ClapTrap " << this->name << " created.\n";
 }
 
 void ClapTrap::attack(const std::string &target)
 {
 	if (this->hp && this->ep)
 	{
-		int damage = 1;
 		this->ep--;
-		std::cout << "ClapTrap " << this->name << " attacks " << target << ", causing " << damage << " point of damage!\n";
+		std::cout << "ClapTrap " << this->name << " attacks " << target << ", causing " << this->ad << " point(s) of damage!\n";
 	}
 }
 
-void ClapTrap::takeDamage(unsigned int damage)
+void ClapTrap::takeDamage(unsigned int amount)
 {
 	if (this->hp)
 	{
-		this->hp -= damage;
-		std::cout << "ClapTrap " << this->name << " took " << damage << " damage!\n";
+		this->hp -= amount;
+		std::cout << "ClapTrap " << this->name << " took " << amount << " damage! Remaining HP: " << this->hp << ".";
+		if (!this->hp)
+			std::cout << " DEAD.";
+		std::cout << std::endl;
 	}
 }
 
-void ClapTrap::beRepaired(unsigned int rp)
+void ClapTrap::beRepaired(unsigned int amount)
 {
 	if (this->hp)
 	{
-		this->hp += rp;
-		std::cout << "ClapTrap " << this->name << " repaired itself by " << rp << " hp!\n";
+		this->hp += amount;
+		this->ep--;
+		std::cout << "ClapTrap " << this->name << " repaired itself by " << amount << " HP! Updated HP: " << this->hp << ".\n";
 	}
 }
 
-void ClapTrap::print_stats()
-{
-	std::cout << "Name:\t" << this->name << std::endl;
-	std::cout << "HP:\t" << this->hp << std::endl;
-	std::cout << "EP:\t" << this->ep << std::endl;
-	std::cout << "AD:\t" << this->ad << std::endl;
-}
+/*
+** --------------------------------- GETTER AND SETTER METHODS ---------------------------------
+*/
 
-//
-
-std::string ClapTrap::getName()
+std::string ClapTrap::getName() const
 {
 	return (this->name);
 }
 
-int ClapTrap::getHP()
+int ClapTrap::getHP() const
 {
 	return (this->hp);
 }
 
-int ClapTrap::getEP()
+int ClapTrap::getEP() const
 {
 	return (this->ep);
 }
 
-int ClapTrap::getAD()
+int ClapTrap::getAD() const
 {
 	return (this->ad);
 }
+
 
 void ClapTrap::setName(std::string name)
 {
@@ -121,4 +125,19 @@ void ClapTrap::setEP(int ep)
 void ClapTrap::setAD(int ad)
 {
 	this->ad = ad;
+}
+
+/*
+** --------------------------------- FUNCS OUTSIDE OF CLASS ---------------------------------
+*/
+
+std::ostream &operator<<(std::ostream &stream, const ClapTrap &ct)
+{
+	stream << "-\n"
+			<< "ClapTrap\n"
+			<< "Name:\t" << ct.getName() << std::endl
+			<< "HP:\t" << ct.getHP() << std::endl
+			<< "EP:\t" << ct.getEP() << std::endl
+			<< "AD:\t" << ct.getAD() << std::endl;
+	return (stream);
 }
