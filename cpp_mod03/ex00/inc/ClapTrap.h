@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 18:14:56 by dmontema          #+#    #+#             */
-/*   Updated: 2022/06/26 21:23:43 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/06/27 20:20:34 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,17 @@ public:
 	void takeDamage(unsigned int);
 	void beRepaired(unsigned int);
 
-	std::string getName();
-	int getHP();
-	int getEP();
-	int getAD();
+	std::string getName() const;
+	int getHP() const;
+	int getEP() const;
+	int getAD() const;
 
 	void setName(std::string);
 	void setHP(int);
 	void setEP(int);
 	void setAD(int);
 };
+
+std::ostream &operator<<(std::ostream&, const ClapTrap&);
 
 #endif
