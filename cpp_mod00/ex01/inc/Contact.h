@@ -28,16 +28,18 @@ public:
 	Contact();
 	Contact(std::string, std::string, std::string, std::string, std::string);
 
-	void set_first(std::string);
-	void set_last(std::string);
-	void set_nickname(std::string);
-	void set_number(std::string);
-	void set_secret(std::string);
+	// ** ---------------------- GETTER AND SETTER METHODS ---------------------- ** //
 	std::string get_first();
 	std::string get_last();
 	std::string get_nickname();
 	std::string get_number();
 	std::string get_secret();
+
+	void set_first(std::string);
+	void set_last(std::string);
+	void set_nickname(std::string);
+	void set_number(std::string);
+	void set_secret(std::string);
 };
 
 #endif

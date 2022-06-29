@@ -10,13 +10,11 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	phone
+NAME	=	phonebook
 
 SRCS	=	src/Contact.cpp src/Phonebook.cpp src/main.cpp
 
 OBJS	=	$(SRCS:.cpp=.o)
-
-INC		=	-I./inc
 
 CC		=	c++
 CFLAGS	=	-Wall -Wextra -Werror -std=c++98
@@ -41,7 +39,7 @@ $(NAME): $(OBJS)
 	@printf "$(GREEN)\tCOMPLETE!$(RESET)\n"
 
 .cpp.o:
-	@$(CC) $(CFLAGS) $(INC) -c $< -o $(<:.cpp=.o)
+	@$(CC) $(CFLAGS) -c $< -o $(<:.cpp=.o)
 
 clean:
 	@rm -f $(OBJS)
