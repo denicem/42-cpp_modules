@@ -34,13 +34,12 @@ RESET	=	\033[m
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@printf "$(CYAN)Installing ****...$(RESET)\n"
+	@printf "$(CYAN)Installing Violence...$(RESET)\n"
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 	@printf "$(GREEN)\tCOMPLETE!$(RESET)\n"
 
-.c.o:
-	@$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
-
+.cpp.o:
+	@$(CC) $(CFLAGS) -c $< -o $(<:.cpp=.o)
 
 clean:
 	@rm -f $(OBJS)

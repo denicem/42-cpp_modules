@@ -41,7 +41,6 @@ $(NAME): $(OBJS)
 .cpp.o:
 	@$(CC) $(CFLAGS) -c $< -o $(<:.cpp=.o)
 
-
 clean:
 	@rm -f $(OBJS)
 	@printf "$(GREEN)Cleaning done.$(RESET)\n"
