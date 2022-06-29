@@ -40,8 +40,8 @@ $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 	@printf "$(GREEN)\tCOMPLETE!$(RESET)\n"
 
-.c.o:
-	@$(CC) $(CFLAGS) $(INC) -c $< -o $(<:.c=.o)
+.cpp.o:
+	@$(CC) $(CFLAGS) $(INC) -c $< -o $(<:.cpp=.o)
 
 
 clean:

@@ -12,7 +12,7 @@
 
 NAME	= account
 
-INCS		=	-I./inc
+INCS		=	-I./inc/
 SRCS		=	src/Account.cpp src/tests.cpp
 
 OBJS		=	$(SRCS:.cpp=.o)
@@ -35,12 +35,12 @@ RESET	=	\033[m
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@printf "$(CYAN)Installing Account...$(RESET)\n"
+	@printf "$(CYAN)Installing Account Manager...$(RESET)\n"
 	@$(CC) $(CFLAGS) $(INCS) $(OBJS) -o $(NAME)
 	@printf "$(GREEN)\tCOMPLETE!$(RESET)\n"
 
-.c.o:
-	@$(CC) $(CFLAGS) $(INCS) -c $< -o $(<:.c=.o)
+.cpp.o:
+	@$(CC) $(CFLAGS) $(INCS) -c $< -o $(<:.cpp=.o)
 
 clean:
 	@rm -f $(OBJS)
