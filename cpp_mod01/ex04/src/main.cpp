@@ -29,16 +29,17 @@ int main(int argc, const char *argv[])
 			std::ofstream outfile(out);
 
 			std::string line;
-			std::string word;
 			std::string res;
 			while (!infile.eof())
 			{
+				std::string word;
 				bool is_first_word = true;
+
+				getline(infile, line);
+				std::istringstream words(line);
 
 				if (!res.empty())
 					res.append("\n");
-				getline(infile, line);
-				std::istringstream words(line);
 				while (words >> word)
 				{
 					if (is_first_word)
@@ -58,6 +59,7 @@ int main(int argc, const char *argv[])
 	}
 	else
 		std::cout << "Invalid number of arguments.\nExample: ./sed <filename> <word to replace> <replacement word>\n";
+
+	// system("leaks sed");
 	return (0);
 }
-
