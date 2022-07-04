@@ -13,8 +13,9 @@
 #ifndef HUMANB_H
 #define HUMANB_H
 
-#include <string>
 #include "Weapon.h"
+
+#include <string>
 
 class HumanB
 {
