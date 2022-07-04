@@ -19,6 +19,9 @@ int main()
 	Zombie* horde = zombieHorde(nbr, "ABBIES");
 	for (int i = 0; i < nbr; i++)
 		horde[i].announce();
+	std::cout << std::endl;
+	horde->announce();
+	std::cout << std::endl;
 	delete[] horde;
 	// system("leaks zombieHorde");
 	return (0);

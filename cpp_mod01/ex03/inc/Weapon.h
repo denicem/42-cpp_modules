@@ -23,8 +23,9 @@ private:
 public:
 	Weapon();
 	Weapon(std::string);
-	void setType(std::string);
+
 	const std::string& getType() const;
+	void setType(std::string);
 };
 
 #endif

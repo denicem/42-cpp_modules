@@ -13,10 +13,7 @@
 #include "../inc/HumanB.h"
 #include <iostream>
 
-HumanB::HumanB(std::string name)
-{
-	this->name = name;
-}
+HumanB::HumanB(std::string name): name(name) {}
 
 void HumanB::setWeapon(Weapon &type)
 {
@@ -25,5 +22,8 @@ void HumanB::setWeapon(Weapon &type)
 
 void HumanB::attack()
 {
-	std::cout << this->name << " attacks with their " << this->wp->getType() << std::endl;
+	if ((this)->wp)
+		std::cout << this->name << " attacks with their " << this->wp->getType() << std::endl;
+	else
+		std::cout << this->name << " don't have a weapon.\n";
 }

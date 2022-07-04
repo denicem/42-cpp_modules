@@ -21,12 +21,12 @@ private:
 	std::string name;
 
 public:
-	Zombie(std::string);
 	Zombie();
+	Zombie(std::string);
 	~Zombie();
 
-	void setName(std::string);
 	std::string getName();
+	void setName(std::string);
 
 	void announce();
 };
