@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 02:48:16 by dmontema          #+#    #+#             */
-/*   Updated: 2022/07/26 17:39:42 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/07/26 21:41:37 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,10 @@ Fixed::Fixed(): val(0)
 	std::cout << "Default constructor called.\n";
 }
 
-Fixed::Fixed(Fixed& other)
+Fixed::Fixed(const Fixed &other)
 {
 	std::cout << "Copy constructor called.\n";
 	*this = other;
-}
-
-Fixed::~Fixed()
-{
-	std::cout << "Destructor called.\n";
-}
-
-Fixed & Fixed::operator=(const Fixed &other)
-{
-	std::cout << "Copy assignment operator called.\n";
-	this->val = other.getRawBits();
-	return (*this);
 }
 
 Fixed::Fixed(const int nb)
@@ -49,7 +37,29 @@ Fixed::Fixed(const float nb)
 	this->val = roundf(nb * (1 << this->fract_bits));
 }
 
-void Fixed::setRawBits(int const raw)
+Fixed::~Fixed()
+{
+	std::cout << "Destructor called.\n";
+}
+
+Fixed& Fixed::operator=(const Fixed &other)
+{
+	std::cout << "Copy assignment operator called.\n";
+	this->val = other.getRawBits();
+	return (*this);
+}
+
+float Fixed::toFloat() const
+{
+	return (static_cast<float>(this->val) / static_cast<float>(1 << this->fract_bits));
+}
+
+int Fixed::toInt() const
+{
+	return (this->val >> fract_bits);
+}
+
+void Fixed::setRawBits(const int raw)
 {
 	this->val = raw;
 }
@@ -57,17 +67,7 @@ void Fixed::setRawBits(int const raw)
 int Fixed::getRawBits() const
 {
 	std::cout << "getRawBits member function called.\n";
-	return (this->val >> Fixed::fract_bits);
-}
-
-float Fixed::toFloat() const
-{
-	return (static_cast<float>(this->val / static_cast<float>(1 << this->fract_bits)));
-}
-
-int Fixed::toInt() const
-{
-	return (this->val >> fract_bits);
+	return (this->val);
 }
 
 std::ostream& operator<<(std::ostream& stream, const Fixed &f)
