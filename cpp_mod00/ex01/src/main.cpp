@@ -12,6 +12,7 @@
 
 #include "../inc/Contact.h"
 #include "../inc/Phonebook.h"
+
 #include <iostream>
 #include <string>
 #include <iomanip>
@@ -77,14 +78,14 @@ int main()
 	Phonebook	pb;
 	std::string	input;
 
-	pb.addContact("DNC", "M", "dncmon", "1234", "Pssht!");
-	pb.addContact("EMS", "V", "emvuc", "5678", "huhu!");
-	pb.addContact("FABIBI", "Quist", "Rami", "143534", "Hehe");
-	pb.addContact("Olawale", "Ipadeola", "Wale", "1358", "Whaaat!");
-	pb.addContact("DENICEGEORGETTEZEN", "MONTEMAYOR", "DGM", "20111995", "ohwow!");
-	pb.addContact("IM", "NAYEON", "NY", "3547", "Bunny girl.");
-	pb.addContact("Randolf", "Bueno", "mnkeybiz", "13546", "prod by BRANDIIII");
-	pb.addContact("Ralph Daniel", "Pacheco", "Pach", "5435786", "PACHIIII");
+	// pb.addContact("DNC", "M", "dncmon", "1234", "Pssht!");
+	// pb.addContact("Denice Georgettezen", "Montemayor", "DGM", "20111995", "ohwow!");
+	// pb.addContact("EMS", "V", "emvuc", "5678", "huhu!");
+	// pb.addContact("Ali", "Gapmann", "Ali?", "012712", "NAHH!");
+	// pb.addContact("Lorraine Mer", "Cortez", "Locyyy/LOCO", "434238377", "Die Coolste.");
+	// pb.addContact("Randolf", "Bueno", "mnkeybiz", "13546", "prod by BRANDIIII");
+	// pb.addContact("Ralph Daniel", "Pacheco", "Pach", "5435786", "PACHIIII");
+
 	pb.display_prompt();
 	std::cout << "> ";
 	while (getline(std::cin, input) && input.compare("EXIT"))
@@ -110,12 +111,3 @@ int main()
 	std::cout << "\nGOODBYE.\n";
 	return (0);
 }
-
-// pb.displayContact(0);
-// pb.displayContact(1);
-// pb.displayContact(4);
-// pb.displayContact(20);
-// pb.displayContact(-20);
-// pb.display_phonebook();
-// Contact c0 = Contact("DNC", "M", "dncmon", "1234", "Pssht!");
-// c0.set_first("Denice");

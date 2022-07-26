@@ -20,7 +20,7 @@ Contact::Contact(std::string first, std::string last, std::string nickname, std:
 {
 	if (first.empty() || last.empty() || nickname.empty() || number.empty() || secret.empty())
 	{
-		std::cout << "All of the fields must not be empty.\n";
+		std::cout << "All of the fields should not be empty.\n";
 		return ;
 	}
 	this->first = first;
@@ -28,6 +28,35 @@ Contact::Contact(std::string first, std::string last, std::string nickname, std:
 	this->nickname = nickname;
 	this->number = number;
 	this->secret = secret;
+}
+
+/*
+** --------------------------------- GETTER AND SETTER METHODS --------------------------------- **
+*/
+
+std::string Contact::get_first()
+{
+	return (this->first);
+}
+
+std::string Contact::get_last()
+{
+	return (this->last);
+}
+
+std::string Contact::get_nickname()
+{
+	return (this->nickname);
+}
+
+std::string Contact::get_number()
+{
+	return (this->number);
+}
+
+std::string Contact::get_secret()
+{
+	return (this->secret);
 }
 
 void Contact::set_first(std::string first)
@@ -53,29 +82,4 @@ void Contact::set_number(std::string number)
 void Contact::set_secret(std::string secret)
 {
 	this->secret = secret;
-}
-
-std::string Contact::get_first()
-{
-	return (this->first);
-}
-
-std::string Contact::get_last()
-{
-	return (this->last);
-}
-
-std::string Contact::get_nickname()
-{
-	return (this->nickname);
-}
-
-std::string Contact::get_number()
-{
-	return (this->number);
-}
-
-std::string Contact::get_secret()
-{
-	return (this->secret);
 }

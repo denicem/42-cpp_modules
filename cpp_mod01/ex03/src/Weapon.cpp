@@ -12,15 +12,9 @@
 
 #include "../inc/Weapon.h"
 
-Weapon::Weapon()
-{
-	this->type = "no weapon";
-}
+Weapon::Weapon(): type("no weapon") {}
 
-Weapon::Weapon(std::string type)
-{
-	this->type = type;
-}
+Weapon::Weapon(std::string type): type(type) {}
 
 void Weapon::setType(std::string type)
 {

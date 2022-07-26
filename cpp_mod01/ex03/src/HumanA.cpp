@@ -13,12 +13,7 @@
 #include "../inc/HumanA.h"
 #include <iostream>
 
-HumanA::HumanA(std::string name, Weapon &type): wp(type)
-{
-	this->name = name;
-	// this->wp.setType(type.getType());
-	// this->wp = type;
-}
+HumanA::HumanA(std::string name, Weapon &type): name(name), wp(type) {}
 
 void HumanA::attack()
 {

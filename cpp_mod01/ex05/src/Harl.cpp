@@ -6,14 +6,14 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 15:48:40 by dmontema          #+#    #+#             */
-/*   Updated: 2022/05/18 15:48:40 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/07/04 19:29:26 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Harl.h"
 #include <iostream>
 
-Harl::Harl() { }
+Harl::Harl() {}
 
 void Harl::debug()
 {
@@ -37,14 +37,15 @@ void Harl::error()
 
 void Harl::complain(std::string level)
 {
-	void (Harl::*func[])() = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+	typedef void (Harl::*func)();
+	func funcs[] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 	std::string lvl[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 
 	for (int i = 0; i < 4; i++)
 	{
 		if (!lvl[i].compare(level))
 		{
-			(this->*func[i])();
+			(this->*funcs[i])();
 			return ;
 		}
 	}

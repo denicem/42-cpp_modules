@@ -13,12 +13,10 @@
 #include "../inc/Zombie.h"
 #include <iostream>
 
-Zombie::Zombie(){}
+Zombie::Zombie(): name("Unknown") {}
 
-Zombie::Zombie(std::string name)
-{
-	this->name = name;
-}
+Zombie::Zombie(std::string name): name(name) {}
+
 Zombie::~Zombie()
 {
 	std::cout << this->name << std::endl;

@@ -26,7 +26,7 @@ int	main(int argc, char const *argv[])
 		for (int i = 1; argv[i]; i++)
 		{
 			for (int j = 0; argv[i][j]; j++)
-				std::cout << to_Upper(argv[i][j]); // normal type casting allowed?
+				std::cout << to_Upper(argv[i][j]);
 		}
 		std::cout << std::endl;
 	}

@@ -6,14 +6,14 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 15:48:40 by dmontema          #+#    #+#             */
-/*   Updated: 2022/05/18 15:48:40 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/07/05 00:11:22 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Harl.h"
 #include <iostream>
 
-Harl::Harl() { }
+Harl::Harl() {}
 
 void Harl::debug()
 {

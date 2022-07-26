@@ -6,7 +6,7 @@
 #    By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/18 15:39:23 by dmontema          #+#    #+#              #
-#    Updated: 2022/05/18 15:39:23 by dmontema         ###   ########.fr        #
+#    Updated: 2022/06/29 17:47:07 by dmontema         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,9 +38,8 @@ $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 	@printf "$(GREEN)\tCOMPLETE!$(RESET)\n"
 
-.c.o:
-	@$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
-
+.cpp.o:
+	@$(CC) $(CFLAGS) -c $< -o $(<:.cpp=.o)
 
 clean:
 	@rm -f $(OBJS)

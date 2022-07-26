@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 15:40:57 by dmontema          #+#    #+#             */
-/*   Updated: 2022/05/18 15:40:57 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/07/05 00:09:53 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ private:
 public:
 	Harl();
 	void complain(std::string);
-
 };
 
 #endif

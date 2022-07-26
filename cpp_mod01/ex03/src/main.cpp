@@ -16,31 +16,38 @@
 
 int main()
 {
-	// Weapon pistol = Weapon("Pistol");
-	// HumanA ha = HumanA("SHAWIE", pistol);
-	// HumanB hb("ABBY");
+	// {
+	// 	Weapon pistol = Weapon("Pistol");
+	// 	HumanA ha = HumanA("SHAWIE", pistol);
+	// 	HumanB hb("ABBY");
 
-	// ha.attack();
-	// pistol.setType("Desert Eagle");
-	// ha.attack();
-	// hb.attack();
+	// 	ha.attack();
+	// 	pistol.setType("Desert Eagle");
+	// 	ha.attack();
+
+	// 	hb.attack();
+	// 	hb.setWeapon(pistol);
+	// 	hb.attack();
+	// }
 
 	{
 		Weapon club = Weapon("crude spiked club");
+
 		HumanA bob("Bob", club);
 		bob.attack();
 		club.setType("some other type of club");
 		bob.attack();
 	}
+
 	{
 		Weapon club = Weapon("crude spiked club");
+
 		HumanB jim("Jim");
-		jim.attack();
 		jim.setWeapon(club);
 		jim.attack();
 		club.setType("some other type of club");
 		jim.attack();
 	}
-}	
 
-// TODO: understand code and those concepts of it and optimize if possible.
+	// system("leaks violence");
+}
