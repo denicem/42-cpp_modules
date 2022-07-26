@@ -13,16 +13,16 @@
 #include "../inc/Fixed.h"
 #include <iostream>
 
-Fixed::Fixed(): fp(0)
+Fixed::Fixed(): val(0)
 {
 	std::cout << "Default constructor called.\n";
 }
 
-Fixed::Fixed(Fixed& other): fp(other.fp)
+Fixed::Fixed(Fixed& other): val(other.val)
 {
 	std::cout << "Copy constructor called.\n";
-	// this->fp = other.fp;
-	// *this = other;
+	// this->val = other.val;
+	*this = other;
 }
 
 Fixed::~Fixed()
@@ -33,26 +33,26 @@ Fixed::~Fixed()
 Fixed & Fixed::operator=(const Fixed &other)
 {
 	std::cout << "Copy assignment operator called.\n";
-	this->fp = other.getRawBits();
+	this->val = other.getRawBits();
 	return (*this);
 }
 
 Fixed::Fixed(int const nb)
 {
 	std::cout << "Int constructor called.\n";
-	this->fp = nb << Fixed::fract_bits;
+	this->val = nb << Fixed::fract_bits;
 
 }
 
 void Fixed::setRawBits(int const raw)
 {
-	this->fp = raw;
+	this->val = raw;
 }
 
 int Fixed::getRawBits() const
 {
 	std::cout << "getRawBits member function called.\n";
-	return (this->fp >> Fixed::fract_bits);
+	return (this->val >> Fixed::fract_bits);
 }
 
 std::ostream& operator<<(std::ostream& stream, const Fixed &f)

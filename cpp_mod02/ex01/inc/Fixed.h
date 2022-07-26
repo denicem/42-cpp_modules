@@ -18,7 +18,7 @@
 class Fixed
 {
 private:
-	int fp;
+	int val;
 	static const int fract_bits = 8;
 
 public:
