@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 02:48:16 by dmontema          #+#    #+#             */
-/*   Updated: 2022/05/22 02:48:16 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/07/26 16:51:07 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,12 @@
 Fixed::Fixed()
 {
 	std::cout << "Default constructor called.\n";
-	val = 0;
+	this->val = 0;
 }
 
 Fixed::Fixed(Fixed& other)
 {
 	std::cout << "Copy constructor called.\n";
-	// this->val = other.val;
 	*this = other;
 }
 
