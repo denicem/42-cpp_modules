@@ -16,7 +16,7 @@
 
 Fixed::Fixed(): val(0)
 {
-	// std::cout << "Default constructor called.\n";
+	std::cout << "Default constructor called.\n";
 }
 
 Fixed::Fixed(const Fixed& other)
@@ -111,9 +111,9 @@ Fixed& Fixed::operator++()
 	return (*this);
 }
 
-Fixed& Fixed::operator++(int)
+Fixed Fixed::operator++(int)
 {
-	Fixed &tmp(*this);
+	Fixed tmp(*this);
 
 	this->val++;
 	return (tmp);
@@ -125,9 +125,9 @@ Fixed& Fixed::operator--()
 	return (*this);
 }
 
-Fixed& Fixed::operator--(int)
+Fixed Fixed::operator--(int)
 {
-	Fixed &tmp(*this);
+	Fixed tmp(*this);
 
 	this->val--;
 	return (tmp);
@@ -155,7 +155,7 @@ void Fixed::setRawBits(const int raw)
 int Fixed::getRawBits() const
 {
 	// std::cout << "getRawBits member function called.\n";
-	return (this->val >> Fixed::fract_bits);
+	return (this->val);
 }
 
 
@@ -182,8 +182,8 @@ const Fixed& Fixed::max(const Fixed& fp1, const Fixed& fp2)
 
 
 
-std::ostream& operator<<(std::ostream& stream, const Fixed &f)
+std::ostream& operator<<(std::ostream& stream, const Fixed &fp)
 {
-	stream << f.toFloat();
+	stream << fp.toFloat();
 	return (stream);
 }
