@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 01:25:12 by dmontema          #+#    #+#             */
-/*   Updated: 2022/07/26 22:45:16 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/07/27 17:01:34 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ public:
 	bool operator<=(const Fixed&) const;
 	bool operator>(const Fixed&) const;
 	bool operator>=(const Fixed&) const;
-	Fixed& operator+(const Fixed&);
-	Fixed& operator-(const Fixed&);
-	Fixed& operator*(const Fixed&);
-	Fixed& operator/(const Fixed&);
+	Fixed operator+(const Fixed&);
+	Fixed operator-(const Fixed&);
+	Fixed operator*(const Fixed&);
+	Fixed operator/(const Fixed&);
 	Fixed& operator++();
 	Fixed operator++(int);
 	Fixed& operator--();
