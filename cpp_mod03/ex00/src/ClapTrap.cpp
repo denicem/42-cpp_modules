@@ -6,13 +6,17 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 18:19:31 by dmontema          #+#    #+#             */
-/*   Updated: 2022/06/27 20:39:47 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/07/28 15:42:14 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ClapTrap.h"
 
 #include <iostream>
+
+/*
+** ----------------------- CONSTRUCTORS & DESTRUCTORS -----------------------
+*/
 
 ClapTrap::ClapTrap(): name("NONAME"), hp(10), ep(10), ad(0)
 {
@@ -22,8 +26,23 @@ ClapTrap::ClapTrap(): name("NONAME"), hp(10), ep(10), ad(0)
 ClapTrap::ClapTrap(const ClapTrap& other)
 {
 	*this = other;
-	std::cout << "ClapTrap " << this->name << " created (Copy)\n";
+	std::cout << "ClapTrap " << this->name << " created (Copy).\n";
 }
+
+ClapTrap::ClapTrap(std::string name): name(name), hp(10), ep(10), ad(0)
+{
+	std::cout << "ClapTrap " << this->name << " created.\n";
+}
+
+
+ClapTrap::~ClapTrap()
+{
+	std::cout << "ClapTrap " << this->name << " destroyed.\n";
+}
+
+/*
+** ----------------------- OPERATOR OVERLOADS -----------------------
+*/
 
 ClapTrap & ClapTrap::operator=(const ClapTrap &other)
 {
@@ -37,19 +56,9 @@ ClapTrap & ClapTrap::operator=(const ClapTrap &other)
 	return (*this);
 }
 
-ClapTrap::~ClapTrap()
-{
-	std::cout << "ClapTrap " << this->name << " destroyed.\n";
-}
-
 /*
-** --------------------------------- ---------------------------------
+** ----------------------- METHODS -----------------------
 */
-
-ClapTrap::ClapTrap(std::string name): name(name), hp(10), ep(10), ad(0)
-{
-	std::cout << "ClapTrap " << this->name << " created.\n";
-}
 
 void ClapTrap::attack(const std::string &target)
 {
@@ -78,12 +87,12 @@ void ClapTrap::beRepaired(unsigned int amount)
 	{
 		this->hp += amount;
 		this->ep--;
-		std::cout << "ClapTrap " << this->name << " repaired itself by " << amount << " HP! Updated HP: " << this->hp << ".\n";
+		std::cout << "ClapTrap " << this->name << " repaired itself by " << amount << " HP. Updated HP: " << this->hp << ".\n";
 	}
 }
 
 /*
-** --------------------------------- GETTER AND SETTER METHODS ---------------------------------
+** ----------------------- GETTER AND SETTER METHODS -----------------------
 */
 
 std::string ClapTrap::getName() const
@@ -128,7 +137,7 @@ void ClapTrap::setAD(int ad)
 }
 
 /*
-** --------------------------------- FUNCS OUTSIDE OF CLASS ---------------------------------
+** ----------------------- FUNCS -----------------------
 */
 
 std::ostream &operator<<(std::ostream &stream, const ClapTrap &ct)
