@@ -1,6 +1,11 @@
+*
+!/**/
+!*.*
+
 *.exe
 *.out
 *.o
+*.d
 *.txt
 .vscode
 .DS_Store
