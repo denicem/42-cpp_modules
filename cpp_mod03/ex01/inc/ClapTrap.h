@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 18:14:56 by dmontema          #+#    #+#             */
-/*   Updated: 2022/06/27 20:20:34 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/07/28 15:51:09 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,14 @@ class ClapTrap
 private:
 	std::string name;
 	int hp, ep, ad;
+
 public:
 	ClapTrap();
 	ClapTrap(const ClapTrap&);
-	~ClapTrap();
-	ClapTrap &operator=(const ClapTrap&);
-
 	ClapTrap(std::string);
+	~ClapTrap();
+
+	ClapTrap& operator=(const ClapTrap&);
 
 	void attack(const std::string&);
 	void takeDamage(unsigned int);
