@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 18:19:31 by dmontema          #+#    #+#             */
-/*   Updated: 2022/07/30 19:56:22 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/07/30 20:08:00 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ ClapTrap::~ClapTrap()
 ** ----------------------- OPERATOR OVERLOADS -----------------------
 */
 
-ClapTrap & ClapTrap::operator=(const ClapTrap &other)
+ClapTrap& ClapTrap::operator=(const ClapTrap &other)
 {
 	if (this != &other)
 	{
