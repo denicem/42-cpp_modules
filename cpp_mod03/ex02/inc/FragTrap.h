@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 18:42:41 by dmontema          #+#    #+#             */
-/*   Updated: 2022/07/30 17:09:36 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/07/30 20:56:11 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,11 @@ public:
 	FragTrap(std::string);
 	~FragTrap();
 
+	FragTrap& operator=(const FragTrap&);
+
 	void highFivesGuys();
 };
+
+std::ostream& operator<<(std::ostream&, const FragTrap&);
 
 #endif

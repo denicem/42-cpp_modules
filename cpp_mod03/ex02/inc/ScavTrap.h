@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 18:42:41 by dmontema          #+#    #+#             */
-/*   Updated: 2022/07/30 17:09:00 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/07/30 20:52:59 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,12 @@ public:
 	ScavTrap(std::string);
 	~ScavTrap();
 
+	ScavTrap& operator=(const ScavTrap&);
+
+	void attack(const std::string&);
 	void guardGate();
 };
+
+std::ostream& operator<<(std::ostream&, const ScavTrap&);
 
 #endif
