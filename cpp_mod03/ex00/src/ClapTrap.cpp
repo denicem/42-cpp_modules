@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 18:19:31 by dmontema          #+#    #+#             */
-/*   Updated: 2022/07/28 15:42:14 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/07/30 19:56:22 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <iostream>
 
 /*
-** ----------------------- CONSTRUCTORS & DESTRUCTORS -----------------------
+** ----------------------- CONSTRUCTORS & DESTRUCTOR -----------------------
 */
 
 ClapTrap::ClapTrap(): name("NONAME"), hp(10), ep(10), ad(0)
