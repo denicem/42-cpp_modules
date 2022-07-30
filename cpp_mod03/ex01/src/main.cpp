@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 18:23:50 by dmontema          #+#    #+#             */
-/*   Updated: 2022/07/28 22:13:22 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/07/30 19:51:08 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ int main()
 	st_cpy.guardGate();
 	st1.attack(st.getName());
 	std::cout << st << st1;
-	
+
 	return (0);
 }

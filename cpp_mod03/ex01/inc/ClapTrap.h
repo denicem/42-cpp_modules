@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 18:14:56 by dmontema          #+#    #+#             */
-/*   Updated: 2022/07/28 15:51:09 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/07/30 20:16:22 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,6 @@ public:
 	void setAD(int);
 };
 
-std::ostream &operator<<(std::ostream&, const ClapTrap&);
+std::ostream& operator<<(std::ostream&, const ClapTrap&);
 
 #endif
