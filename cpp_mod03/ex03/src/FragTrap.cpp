@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 18:54:42 by dmontema          #+#    #+#             */
-/*   Updated: 2022/07/28 23:35:51 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/07/30 21:03:35 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <iostream>
 
 /*
-** ----------------------- CONSTRUCTORS & DESTRUCTORS -----------------------
+** ----------------------- CONSTRUCTORS & DESTRUCTOR -----------------------
 */
 
 FragTrap::FragTrap(): ClapTrap()
@@ -28,7 +28,7 @@ FragTrap::FragTrap(): ClapTrap()
 
 FragTrap::FragTrap(const FragTrap &other): ClapTrap(other)
 {
-	// *this = other;
+	*this = other;
 	std::cout << "FragTrap " << this->getName() << " created (Copy)\n";
 }
 
@@ -49,10 +49,41 @@ FragTrap::~FragTrap()
 }
 
 /*
+** ----------------------- OPERATOR OVERLOADS -----------------------
+*/
+
+FragTrap& FragTrap::operator=(const FragTrap &other)
+{
+	if (this != &other)
+	{
+		this->setName(other.getName());
+		this->setHP(other.getHP());
+		this->setEP(other.getEP());
+		this->setAD(other.getAD());
+	}
+	return (*this);
+}
+
+/*
 ** ----------------------- METHODS -----------------------
 */
 
 void FragTrap::highFivesGuys()
 {
 	std::cout << "FragTrap " << this->getName() << " requests a High Five.\n";
+}
+
+/*
+** ----------------------- FUNCS -----------------------
+*/
+
+std::ostream& operator<<(std::ostream &stream, const FragTrap &st)
+{
+	stream << "-\n"
+			<< "FragTrap\n"
+			<< "Name:\t" << st.getName() << std::endl
+			<< "HP:\t" << st.getHP() << std::endl
+			<< "EP:\t" << st.getEP() << std::endl
+			<< "AD:\t" << st.getAD() << std::endl;
+	return (stream);
 }
