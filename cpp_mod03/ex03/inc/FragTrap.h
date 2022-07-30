@@ -6,9 +6,12 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 18:42:41 by dmontema          #+#    #+#             */
-/*   Updated: 2022/07/28 23:27:28 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/07/30 17:07:10 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef FRAGTRAP_H
+#define FRAGTRAP_H
 
 #include "ClapTrap.h"
 
@@ -22,3 +25,5 @@ public:
 
 	void highFivesGuys();
 };
+
+#endif
