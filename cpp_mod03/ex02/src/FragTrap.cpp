@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 18:54:42 by dmontema          #+#    #+#             */
-/*   Updated: 2022/07/30 20:59:21 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/08/01 19:04:56 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,13 +77,13 @@ void FragTrap::highFivesGuys()
 ** ----------------------- FUNCS -----------------------
 */
 
-std::ostream& operator<<(std::ostream &stream, const FragTrap &st)
+std::ostream& operator<<(std::ostream &stream, const FragTrap &ft)
 {
 	stream << "-\n"
 			<< "FragTrap\n"
-			<< "Name:\t" << st.getName() << std::endl
-			<< "HP:\t" << st.getHP() << std::endl
-			<< "EP:\t" << st.getEP() << std::endl
-			<< "AD:\t" << st.getAD() << std::endl;
+			<< "Name:\t" << ft.getName() << std::endl
+			<< "HP:\t" << ft.getHP() << std::endl
+			<< "EP:\t" << ft.getEP() << std::endl
+			<< "AD:\t" << ft.getAD() << std::endl;
 	return (stream);
 }
