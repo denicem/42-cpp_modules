@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 18:23:50 by dmontema          #+#    #+#             */
-/*   Updated: 2022/08/01 19:02:11 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/08/01 19:10:45 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 int main()
 {
-	DiamondTrap dt("DNC");
+	DiamondTrap dt;
 	DiamondTrap dt1("DNC");
 	DiamondTrap dt2(dt1);
 
@@ -33,7 +33,7 @@ int main()
 	dt2.highFivesGuys();
 	dt1.attack(dt.getName());
 	
-	std::cout << std::endl << dt << dt1 << std::endl;
+	std::cout << std::endl << dt << dt1 << dt2 << std::endl;
 	
 	return (0);
 }

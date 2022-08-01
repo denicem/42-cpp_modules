@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 18:23:50 by dmontema          #+#    #+#             */
-/*   Updated: 2022/07/28 23:34:51 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/08/01 19:09:50 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int main()
 	FragTrap ft_cpy(ft1);
 	ft1.highFivesGuys();
 	ft1.attack(ft.getName());
-	std::cout << ft << ft1;
+	std::cout << ft << ft1 << ft_cpy;
 	
 	return (0);
 }

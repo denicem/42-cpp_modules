@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 18:23:50 by dmontema          #+#    #+#             */
-/*   Updated: 2022/07/28 15:39:33 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/08/01 19:08:03 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,9 @@ int main()
 	// *** TEST CASES FOR CONSTRUCTORS ***
 	{
 		std::cout << "*** TEST CASES FOR CONSTRUCTORS ***\n";
-		// ClapTrap;
-		// ClapTrap("LORR");
-
 		ClapTrap ct;
 		ClapTrap ct1("DNC");
-		// ClapTrap ct1 = ClapTrap("DNC");
 		ClapTrap ct2(ct1);
-		// ClapTrap ct2 = ClapTrap(ct1);
-		// ClapTrap ct2 = ct1;
 	}
 	std::cout << std::endl;
 
@@ -35,7 +29,7 @@ int main()
 	{
 		std::cout << "*** TEST CASES FOR CLASS METHODS, OVERLOADS, FUNCS, etc. ***\n";
 		ClapTrap ct("DNC");
-		ClapTrap ct1("MON");
+		ClapTrap ct1("LORR");
 		std::cout << ct << std::endl << ct1 << std::endl;
 
 		ct.attack(ct1.getName());
