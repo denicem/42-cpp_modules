@@ -16,7 +16,7 @@
 #include "ScavTrap.h"
 #include "FragTrap.h"
 
-class DiamondTrap: public ScavTrap, public FragTrap
+class DiamondTrap: public ScavTrap, FragTrap
 {
 private:
 	std::string name;
@@ -31,6 +31,10 @@ public:
 
 	void attack(const std::string&);
 	void whoAmI();
+
+	std::string getName() const;
+
+	void setName(std::string);
 };
 
 std::ostream& operator<<(std::ostream&, const DiamondTrap&);

@@ -20,31 +20,31 @@
 
 ScavTrap::ScavTrap(): ClapTrap()
 {
-	this->setHP(100);
-	this->setEP(50);
-	this->setAD(20);
+	this->hp = 100;
+	this->ep = 50;
+	this->ad = 20;
 	std::cout << "ScavTrap NONAME created (Default).\n";
 }
 
 ScavTrap::ScavTrap(const ScavTrap &other): ClapTrap(other)
 {
 	*this = other;
-	std::cout << "ScavTrap " << this->getName() << " created (Copy)\n";
+	std::cout << "ScavTrap " << this->name << " created (Copy)\n";
 }
 
 ScavTrap::ScavTrap(std::string name): ClapTrap(name)
 {
-	this->setName(name);
-	this->setHP(100);
-	this->setEP(50);
-	this->setAD(20);
-	std::cout << "ScavTrap " << this->getName() << " created.\n";
+	this->name = name;
+	this->hp = 100;
+	this->ep = 50;
+	this->ad = 20;
+	std::cout << "ScavTrap " << this->name << " created.\n";
 }
 
 
 ScavTrap::~ScavTrap()
 {
-	std::cout << "ScavTrap " << this->getName() << " destroyed.\n";
+	std::cout << "ScavTrap " << this->name << " destroyed.\n";
 }
 
 /*
@@ -55,10 +55,10 @@ ScavTrap& ScavTrap::operator=(const ScavTrap &other)
 {
 	if (this != &other)
 	{
-		this->setName(other.getName());
-		this->setHP(other.getHP());
-		this->setEP(other.getEP());
-		this->setAD(other.getAD());
+		this->name = other.name;
+		this->hp = other.hp;
+		this->ep = other.ep;
+		this->ad = other.ad;
 	}
 	return (*this);
 }
@@ -69,16 +69,16 @@ ScavTrap& ScavTrap::operator=(const ScavTrap &other)
 
 void ScavTrap::attack(const std::string &target)
 {
-	if (this->getHP() && this->getEP())
+	if (this->hp && this->ep)
 	{
-		this->setEP(this->getEP() - 1);
-		std::cout << "ScavTrap " << this->getName() << " attacks " << target << ", causing " << this->getAD() << " point(s) of damage!\n";
+		this->ep--;
+		std::cout << "ScavTrap " << this->name << " attacks " << target << ", causing " << this->ad << " point(s) of damage!\n";
 	}
 }
 
 void ScavTrap::guardGate()
 {
-	std::cout << "ScavTrap " << this->getName() << " is now in Gate keeper mode.\n";
+	std::cout << "ScavTrap " << this->name << " is now in Gate keeper mode.\n";
 }
 
 /*

@@ -18,34 +18,34 @@
 ** ----------------------- CONSTRUCTORS & DESTRUCTOR -----------------------
 */
 
-DiamondTrap::DiamondTrap(): ClapTrap(), ScavTrap(), FragTrap()
+DiamondTrap::DiamondTrap(): ClapTrap(), ScavTrap(), FragTrap(), name("NONAME")
 {
-	ClapTrap::setName(this->getName() + "_clap_name");
-	this->setHP(FragTrap::getHP());
-	this->setEP(ScavTrap::getEP());
-	this->setAD(FragTrap::getAD());
+	this->hp = FragTrap::hp;
+	this->ep = ScavTrap::ep; // FIXME: the og value from this class (ScavTrap) can't be assigned, because it will be overwritten by the other class (FragTrap)?!?
+	this->ad = FragTrap::ad;
+	ClapTrap::name = this->name + "_clap_name";
 	std::cout << "DiamondTrap NONAME created (Default).\n";
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap &other): ClapTrap(other), ScavTrap(other), FragTrap(other)
 {
-	ClapTrap::setName(this->getName() + "_clap_name");
 	*this = other;
-	std::cout << "DiamondTrap " << this->getName() << " created (Copy)\n";
+	std::cout << "DiamondTrap " << this->name << " created (Copy)\n";
 }
 
-DiamondTrap::DiamondTrap(std::string name): ClapTrap(name + "_clap_name"), ScavTrap(name), FragTrap(name)
+DiamondTrap::DiamondTrap(std::string name): ClapTrap(name), ScavTrap(), FragTrap(), name(name)
 {
-	this->setHP(FragTrap::getHP());
-	this->setEP(ScavTrap::getEP());
-	this->setAD(FragTrap::getAD());
-	std::cout << "DiamondTrap " << this->getName() << " created.\n";
+	this->hp = FragTrap::hp;
+	this->ep = ScavTrap::ep;
+	this->ad = FragTrap::ad;
+	ClapTrap::name = this->name + "_clap_name";
+	std::cout << "DiamondTrap " << this->name << " created.\n";
 }
 
 
 DiamondTrap::~DiamondTrap()
 {
-	std::cout << "DiamondTrap " << this->getName() << " destroyed.\n";
+	std::cout << "DiamondTrap " << this->name << " destroyed.\n";
 }
 
 /*
@@ -56,10 +56,11 @@ DiamondTrap& DiamondTrap::operator=(const DiamondTrap &other)
 {
 	if (this != &other)
 	{
-		this->setName(other.getName());
-		this->setHP(other.getHP());
-		this->setEP(other.getEP());
-		this->setAD(other.getAD());
+		this->name = other.name;
+		this->hp = other.hp;
+		this->ep = other.ep;
+		this->ad = other.ad;
+		ClapTrap::name = this->name + "_clap_name";
 	}
 	return (*this);
 }
@@ -70,12 +71,27 @@ DiamondTrap& DiamondTrap::operator=(const DiamondTrap &other)
 
 void DiamondTrap::attack(const std::string &target)
 {
-	ScavTrap::attack(target);
+	this->ScavTrap::attack(target);
 }
 
 void DiamondTrap::whoAmI()
 {
-	std::cout << "Name: " << this->getName() << std::endl << "ClapTrap name: " << ClapTrap::getName() << std::endl;
+	std::cout << "Name: " << this->name << std::endl << "ClapTrap name: " << ClapTrap::name << std::endl;
+}
+
+/*
+** ----------------------- GETTER AND SETTER METHODS -----------------------
+*/
+
+std::string DiamondTrap::getName() const
+{
+	return (this->name);
+}
+
+
+void DiamondTrap::setName(std::string name)
+{
+	this->name = name;
 }
 
 /*
@@ -89,6 +105,7 @@ std::ostream& operator<<(std::ostream &stream, const DiamondTrap &dt)
 			<< "Name:\t" << dt.getName() << std::endl
 			<< "HP:\t" << dt.getHP() << std::endl
 			<< "EP:\t" << dt.getEP() << std::endl
-			<< "AD:\t" << dt.getAD() << std::endl;
+			<< "AD:\t" << dt.getAD() << std::endl
+			<< "ClapTrap name:\t" << dt.ClapTrap::getName() << std::endl;
 	return (stream);
 }

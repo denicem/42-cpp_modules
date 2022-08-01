@@ -20,7 +20,24 @@
 int main()
 {
 	DiamondTrap dt;
-	dt.whoAmI();
+	std::cout << dt << std::endl;
+	// DiamondTrap dt1("DNC");
+	// std::cout << std::endl;
+	// DiamondTrap dt2(dt1);
+	// std::cout << std::endl;
+
+	// dt.whoAmI();
+	// dt1.whoAmI();
+	// dt2.whoAmI();
+	// std::cout << std::endl;
+	// dt1.guardGate();
+	// std::cout << std::endl;
+	// dt2.highFivesGuys();
+	// std::cout << std::endl;
+	// dt1.attack(dt.getName());
+	// std::cout << std::endl;
+	// std::cout << dt << dt1;
+	// std::cout << std::endl;
 	
 	return (0);
 }
