@@ -20,32 +20,32 @@
 
 FragTrap::FragTrap(): ClapTrap()
 {
-	this->setHP(100);
-	this->setEP(100);
-	this->setAD(30);
+	this->hp = 100;
+	this->ep = 100;
+	this->ad = 30;
 	std::cout << "FragTrap NONAME created (Default).\n";
 }
 
 FragTrap::FragTrap(const FragTrap &other): ClapTrap(other)
 {
 	*this = other;
-	std::cout << "FragTrap " << this->getName() << " created (Copy)\n";
+	std::cout << "FragTrap " << this->name << " created (Copy)\n";
 }
 
 FragTrap::FragTrap(std::string name): ClapTrap(name)
 {
-	this->setName(name);
-	this->setHP(100);
-	this->setEP(100);
-	this->setAD(30);
-	std::cout << "FragTrap " << this->getName() << " created.\n";
+	this->name = name;
+	this->hp = 100;
+	this->ep = 100;
+	this->ad = 30;
+	std::cout << "FragTrap " << this->name << " created.\n";
 
 }
 
 
 FragTrap::~FragTrap()
 {
-	std::cout << "FragTrap " << this->getName() << " destroyed.\n";
+	std::cout << "FragTrap " << this->name << " destroyed.\n";
 }
 
 /*
@@ -56,10 +56,10 @@ FragTrap& FragTrap::operator=(const FragTrap &other)
 {
 	if (this != &other)
 	{
-		this->setName(other.getName());
-		this->setHP(other.getHP());
-		this->setEP(other.getEP());
-		this->setAD(other.getAD());
+		this->name = other.name;
+		this->hp = other.hp;
+		this->ep = other.ep;
+		this->ad = other.ad;
 	}
 	return (*this);
 }
@@ -70,7 +70,7 @@ FragTrap& FragTrap::operator=(const FragTrap &other)
 
 void FragTrap::highFivesGuys()
 {
-	std::cout << "FragTrap " << this->getName() << " requests a High Five.\n";
+	std::cout << "FragTrap " << this->name << " requests a High Five.\n";
 }
 
 /*
