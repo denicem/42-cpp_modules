@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 21:44:11 by dmontema          #+#    #+#             */
-/*   Updated: 2022/07/30 22:05:14 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/08/01 19:02:05 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,8 @@
 ** ----------------------- CONSTRUCTORS & DESTRUCTOR -----------------------
 */
 
-DiamondTrap::DiamondTrap(): ClapTrap(), ScavTrap(), FragTrap(), name("NONAME")
+DiamondTrap::DiamondTrap(): name("NONAME")
 {
-	this->hp = FragTrap::hp;
-	this->ep = ScavTrap::ep; // FIXME: the og value from this class (ScavTrap) can't be assigned, because it will be overwritten by the other class (FragTrap)?!?
-	this->ad = FragTrap::ad;
 	ClapTrap::name = this->name + "_clap_name";
 	std::cout << "DiamondTrap NONAME created (Default).\n";
 }
@@ -33,11 +30,8 @@ DiamondTrap::DiamondTrap(const DiamondTrap &other): ClapTrap(other), ScavTrap(ot
 	std::cout << "DiamondTrap " << this->name << " created (Copy)\n";
 }
 
-DiamondTrap::DiamondTrap(std::string name): ClapTrap(name), ScavTrap(), FragTrap(), name(name)
+DiamondTrap::DiamondTrap(std::string name): ClapTrap(name), ScavTrap(name), FragTrap(name), name(name)
 {
-	this->hp = FragTrap::hp;
-	this->ep = ScavTrap::ep;
-	this->ad = FragTrap::ad;
 	ClapTrap::name = this->name + "_clap_name";
 	std::cout << "DiamondTrap " << this->name << " created.\n";
 }

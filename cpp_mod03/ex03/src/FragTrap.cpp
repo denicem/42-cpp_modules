@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 18:54:42 by dmontema          #+#    #+#             */
-/*   Updated: 2022/07/30 21:03:35 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/08/01 19:03:04 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@
 FragTrap::FragTrap(): ClapTrap()
 {
 	this->hp = 100;
-	this->ep = 100;
+	if (this->ep == 10)
+		this->ep = 100;
 	this->ad = 30;
 	std::cout << "FragTrap NONAME created (Default).\n";
 }
@@ -36,7 +37,8 @@ FragTrap::FragTrap(std::string name): ClapTrap(name)
 {
 	this->name = name;
 	this->hp = 100;
-	this->ep = 100;
+	if (this->ep == 10)
+		this->ep = 100;
 	this->ad = 30;
 	std::cout << "FragTrap " << this->name << " created.\n";
 
@@ -77,13 +79,13 @@ void FragTrap::highFivesGuys()
 ** ----------------------- FUNCS -----------------------
 */
 
-std::ostream& operator<<(std::ostream &stream, const FragTrap &st)
+std::ostream& operator<<(std::ostream &stream, const FragTrap &ft)
 {
 	stream << "-\n"
 			<< "FragTrap\n"
-			<< "Name:\t" << st.getName() << std::endl
-			<< "HP:\t" << st.getHP() << std::endl
-			<< "EP:\t" << st.getEP() << std::endl
-			<< "AD:\t" << st.getAD() << std::endl;
+			<< "Name:\t" << ft.getName() << std::endl
+			<< "HP:\t" << ft.getHP() << std::endl
+			<< "EP:\t" << ft.getEP() << std::endl
+			<< "AD:\t" << ft.getAD() << std::endl;
 	return (stream);
 }

@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 23:41:02 by dmontema          #+#    #+#             */
-/*   Updated: 2022/07/30 21:58:29 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/08/01 18:20:58 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "ScavTrap.h"
 #include "FragTrap.h"
 
-class DiamondTrap: public ScavTrap, FragTrap
+class DiamondTrap: public ScavTrap, public FragTrap
 {
 private:
 	std::string name;
