@@ -29,9 +29,9 @@ SPACE	=	\e[50C
 #	RULES																	   #
 # **************************************************************************** #
 
--include $(DEPS)
-
 all: $(NAME)
+
+-include $(DEPS)
 
 $(NAME): $(OBJS)
 	@printf "$(BLUE)Linking objects to a binary file$(RESET)\r"

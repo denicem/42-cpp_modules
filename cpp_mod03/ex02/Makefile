@@ -6,7 +6,7 @@
 #    By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/28 14:35:40 by dmontema          #+#    #+#              #
-#    Updated: 2022/07/28 14:55:09 by dmontema         ###   ########.fr        #
+#    Updated: 2022/08/01 19:22:16 by dmontema         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,9 +41,9 @@ SPACE	=	\e[50C
 #	RULES																	   #
 # **************************************************************************** #
 
--include $(DEPS)
-
 all: $(NAME)
+
+-include $(DEPS)
 
 $(NAME): $(OBJS)
 	@printf "$(BLUE)Linking objects to a binary file$(RESET)\r"
