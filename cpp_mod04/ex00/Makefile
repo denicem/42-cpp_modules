@@ -6,11 +6,11 @@
 #    By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/01 19:53:08 by dmontema          #+#    #+#              #
-#    Updated: 2022/08/01 19:53:19 by dmontema         ###   ########.fr        #
+#    Updated: 2022/08/02 15:56:36 by dmontema         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	\
+NAME	=	Animal
 
 SRC_DIR	=	./src
 SRCS	=	$(shell find $(SRC_DIR) -name "*.cpp" -execdir echo {} ";")
