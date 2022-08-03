@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 16:53:13 by dmontema          #+#    #+#             */
-/*   Updated: 2022/08/02 21:10:53 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/08/04 01:48:46 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ Dog::Dog()
 Dog::Dog(const Dog &other): Animal(other)
 {
 	*this = other;
-	this->brain = new Brain();
+	this->brain = new Brain(*other.brain);
 	std::cout << "Dog created (Copy).\n";
 }
 Dog::~Dog()
@@ -45,7 +45,7 @@ Dog& Dog::operator=(const Dog &other)
 {
 	if (this != &other)
 	{
-		this->brain = new Brain(*other.brain);
+		*this->brain = *other.brain;
 		this->type = other.type;
 	}
 	return (*this);
@@ -63,6 +63,19 @@ void Dog::makeSound() const
 /*
 ** ----------------------- GETTER AND SETTER METHODS -----------------------
 */
+
+std::string Dog::getBrain(unsigned index)
+{
+	if (index < 100)
+		return (this->brain->getIdea(index));
+	return ("");
+}
+
+void Dog::setBrain(unsigned index, std::string idea)
+{
+	if (index < 100)
+		this->brain->setIdea(index, idea);
+}
 
 /*
 ** ----------------------- FUNCS -----------------------

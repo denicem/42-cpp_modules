@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 20:49:38 by dmontema          #+#    #+#             */
-/*   Updated: 2022/08/02 21:07:50 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/08/04 01:19:27 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 
 Brain::Brain()
 {
+	for (int i = 0; i < 100; i++)
+		this->ideas[i] = "No idea...";
 	std::cout << "Brain created (Default).\n";
 }
 
@@ -55,6 +57,19 @@ Brain& Brain::operator=(const Brain &other)
 /*
 ** ----------------------- GETTER AND SETTER METHODS -----------------------
 */
+
+std::string Brain::getIdea(unsigned index)
+{
+	if (index < 100)
+		return (this->ideas[index]);
+	return ("");
+}
+
+void Brain::setIdea(unsigned index, std::string idea)
+{
+	if (index < 100)
+		this->ideas[index] = idea;
+}
 
 /*
 ** ----------------------- FUNCS -----------------------

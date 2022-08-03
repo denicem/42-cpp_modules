@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 16:56:25 by dmontema          #+#    #+#             */
-/*   Updated: 2022/08/02 21:11:06 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/08/04 01:48:51 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ Cat::Cat()
 Cat::Cat(const Cat &other): Animal(other)
 {
 	*this = other;
-	this->brain = new Brain();
+	this->brain = new Brain(*other.brain);
 	std::cout << "Cat created (Copy).\n";
 }
 Cat::~Cat()
@@ -45,7 +45,7 @@ Cat& Cat::operator=(const Cat &other)
 {
 	if (this != &other)
 	{
-		this->brain = new Brain(*other.brain);
+		*this->brain = *other.brain;
 		this->type = other.type;
 	}
 	return (*this);
@@ -63,6 +63,19 @@ void Cat::makeSound() const
 /*
 ** ----------------------- GETTER AND SETTER METHODS -----------------------
 */
+
+std::string Cat::getBrain(unsigned index)
+{
+	if (index < 100)
+		return (this->brain->getIdea(index));
+	return ("");
+}
+
+void Cat::setBrain(unsigned index, std::string idea)
+{
+	if (index < 100)
+		this->brain->setIdea(index, idea);
+}
 
 /*
 ** ----------------------- FUNCS -----------------------

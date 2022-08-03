@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 16:26:01 by dmontema          #+#    #+#             */
-/*   Updated: 2022/08/02 20:39:55 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/08/04 01:22:10 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ public:
 	Cat& operator=(const Cat&);
 
 	void makeSound() const;
+
+	std::string getBrain(unsigned);
+	void setBrain(unsigned, std::string);
 };
 
 #endif
