@@ -1,38 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.h                                         :+:      :+:    :+:   */
+/*   Character.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/04 02:31:13 by dmontema          #+#    #+#             */
-/*   Updated: 2022/08/04 17:35:57 by dmontema         ###   ########.fr       */
+/*   Created: 2022/08/04 17:05:09 by dmontema          #+#    #+#             */
+/*   Updated: 2022/08/04 23:11:54 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MATERIA_H
-#define MATERIA_H
+#ifndef CHARACTER_H
+#define CHARACTER_H
 
 #include "ICharacter.h"
+#include "AMateria.h"
+#include "MateriaSource.h"
 
 #include <string>
 
-class AMateria
+class Character: public ICharacter
 {
-protected:
-	std::string type;
+private:
+	std::string name;
+	MateriaSource* inv;
+
 public:
-	AMateria();
-	AMateria(const AMateria&);
-	AMateria(std::string const & type);
-	~AMateria();
+	Character();
+	Character(std::string);
+	Character(const Character&);
+	~Character();
 
-	AMateria& operator=(const AMateria&);
+	Character& operator=(const Character&);
 
-	virtual AMateria* clone() const = 0;
-	virtual void use(ICharacter& target);
+	void equip(AMateria *);
+	void unequip(int idx);
+	void use(int idx, ICharacter& target);
 
-	std::string const &getType() const;
+	std::string& getName() const;
 };
 
 #endif

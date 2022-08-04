@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 02:54:48 by dmontema          #+#    #+#             */
-/*   Updated: 2022/08/04 02:56:23 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/08/04 17:41:37 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,13 @@ class Cure: public AMateria
 public:
 	Cure();
 	Cure(const Cure&);
+	Cure(std::string const & type);
 	~Cure();
 
 	Cure& operator=(const Cure&);
 
-	std::string getType() const;
+	AMateria* clone() const;
+	void use(ICharacter& target);
 };
 
 #endif
