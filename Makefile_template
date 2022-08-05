@@ -51,11 +51,11 @@ prep:
 clean:
 	@printf "$(MAGENTA)Removing object files...\r$(RESET)"
 	@rm -rf $(OBJS) $(OBJ_DIR)
-	@printf "\e[50C$(GREEN)[✓]\n$(RESET)"
+	@printf "$(SPACE)$(GREEN)[✓]\n$(RESET)"
 
 fclean: clean
 	@printf "$(MAGENTA)Removing binary file...\r$(RESET)"
 	@rm -rf $(NAME)
-	@printf "\e[50C$(GREEN)[✓]\n$(RESET)\n"
+	@printf "$(SPACE)$(GREEN)[✓]\n$(RESET)\n"
 
 re: fclean all
