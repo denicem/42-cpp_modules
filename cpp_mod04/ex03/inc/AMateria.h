@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 02:31:13 by dmontema          #+#    #+#             */
-/*   Updated: 2022/08/04 17:35:57 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/08/05 17:36:13 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 
 #include <string>
 
+class ICharacter;
+
 class AMateria
 {
 protected:
@@ -25,7 +27,7 @@ public:
 	AMateria();
 	AMateria(const AMateria&);
 	AMateria(std::string const & type);
-	~AMateria();
+	virtual ~AMateria();
 
 	AMateria& operator=(const AMateria&);
 

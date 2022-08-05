@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cure.cpp                                           :+:      :+:    :+:   */
+/*   MateriaSource.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/04 16:49:04 by dmontema          #+#    #+#             */
-/*   Updated: 2022/08/05 16:57:18 by dmontema         ###   ########.fr       */
+/*   Created: 2022/08/05 13:50:34 by dmontema          #+#    #+#             */
+/*   Updated: 2022/08/05 17:43:55 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../inc/MateriaSource.h"
+#include "../inc/Ice.h"
 #include "../inc/Cure.h"
-#include "../inc/ICharacter.h"
 
 #include <iostream>
 
@@ -19,36 +20,34 @@
 ** ----------------------- CONSTRUCTORS & DESTRUCTOR -----------------------
 */
 
-Cure::Cure(): AMateria()
+MateriaSource::MateriaSource()
 {
-	this->type = "cure";
-	std::cout << "Cure created (Default).\n";
+	std::cout << "MaterieSource created (Default).\n";
 }
 
-Cure::Cure(const Cure& other)
+MateriaSource::MateriaSource(const MateriaSource& other)
 {
 	*this = other;
-	std::cout << "Cure created (Copy).\n";
+	std::cout << "MateriaSource created (Copy).\n";
 }
 
-Cure::Cure(std::string const & type): AMateria(type)
+MateriaSource::~MateriaSource()
 {
-	this->type = type;
-	std::cout << "Cure created.\n";
-}
-
-Cure::~Cure()
-{
-	std::cout << "Cure destroyed.\n";
+	for (int i = 0; i < 4; i++)
+		if (this->inv[i])
+			delete this->inv[i];
+	std::cout << "MateriaSource destroyed.\n";
 }
 
 /*
 ** ----------------------- OPERATOR OVERLOADS -----------------------
 */
 
-Cure& Cure::operator=(const Cure& other)
+MateriaSource& MateriaSource::operator=(const MateriaSource& other)
 {
-	this->type = other.type;
+	if (this != &other)
+		for (int i = 0; i < 4; i++)
+			this->inv[i] = other.inv[i];
 	return (*this);
 }
 
@@ -56,14 +55,24 @@ Cure& Cure::operator=(const Cure& other)
 ** ----------------------- METHODS -----------------------
 */
 
-AMateria* Cure::clone() const
+void MateriaSource::learnMateria(AMateria* mat)
 {
-	return (new Cure());
+	for (int i = 0; i < 4; i++)
+	{
+		if (!this->inv[i])
+		{
+			this->inv[i] = mat;
+			return ;
+		}
+	}
 }
 
-void Cure::use(ICharacter& target)
+AMateria* MateriaSource::createMateria(std::string const & type)
 {
-	std::cout << "* heals " << target.getName() << "'s wounds *\n";
+	for (int i = 0; i < 4; i++)
+		if (this->inv[i] && this->inv[i]->getType() == type)
+			return (this->inv[i]);
+	return (0);
 }
 
 /*
