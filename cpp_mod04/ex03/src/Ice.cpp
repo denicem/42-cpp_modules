@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:31:42 by dmontema          #+#    #+#             */
-/*   Updated: 2022/08/05 16:57:23 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/08/05 18:26:45 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,3 @@ void Ice::use(ICharacter& target)
 {
 	std::cout << "* shoots an ice bolt at " << target.getName() << " *\n";
 }
-
-/*
-** ----------------------- GETTER AND SETTER METHODS -----------------------
-*/
-
-/*
-** ----------------------- FUNCS -----------------------
-*/

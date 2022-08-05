@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 13:50:34 by dmontema          #+#    #+#             */
-/*   Updated: 2022/08/05 17:43:55 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/08/05 18:27:05 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,3 @@ AMateria* MateriaSource::createMateria(std::string const & type)
 			return (this->inv[i]);
 	return (0);
 }
-
-/*
-** ----------------------- GETTER AND SETTER METHODS -----------------------
-*/
-
-/*
-** ----------------------- FUNCS -----------------------
-*/
