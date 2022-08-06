@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 15:43:20 by dmontema          #+#    #+#             */
-/*   Updated: 2022/08/06 17:37:32 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/08/06 19:03:33 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,12 +104,12 @@ void Bureaucrat::decGrade()
 
 const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return "Grade too High.";
+	return ("\033[31;1mGrade too High.\033[0m");
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return "Grade too Low.";
+	return("\033[31;1mGrade too Low.\033[0m");
 }
 /*
 ** ----------------------- FUNCS -----------------------
