@@ -24,9 +24,12 @@ Bureaucrat::Bureaucrat(): name("no name"), grade(75)
 	std::cout << "Bureaucrat no name created (Default).\n";
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat& other)
+Bureaucrat::Bureaucrat(const Bureaucrat& other): name(other.name), grade(other.grade)
 {
-	*this = other;
+	if (grade < 1)
+		throw GradeTooHighException();
+	if (grade > 150)
+		throw GradeTooLowException();
 	std::cout << "Bureaucrat " << this->name <<  " created (Copy).\n";
 }
 
@@ -35,13 +38,12 @@ Bureaucrat::Bureaucrat(const std::string name): name(name), grade(75)
 	std::cout << "Bureaucrat " << this->name <<  " created (str).\n";
 }
 
-Bureaucrat::Bureaucrat(const std::string name, int grade): name(name)
+Bureaucrat::Bureaucrat(const std::string name, int grade): name(name), grade(grade)
 {
 	if (grade < 1)
 		throw GradeTooHighException();
 	if (grade > 150)
 		throw GradeTooLowException();
-	this->grade = grade;
 	std::cout << "Bureaucrat " << this->name <<  " created (str, int).\n";
 }
 
