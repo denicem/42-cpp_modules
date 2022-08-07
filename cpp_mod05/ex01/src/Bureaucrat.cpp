@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 15:43:20 by dmontema          #+#    #+#             */
-/*   Updated: 2022/08/06 19:17:04 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/08/07 18:40:24 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,7 @@ Bureaucrat::~Bureaucrat()
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other)
 {
 	if (this != &other)
-	{
 		this->grade = other.grade;
-	}
 	return (*this);
 }
 
@@ -100,6 +98,19 @@ void Bureaucrat::decGrade()
 		throw GradeTooLowException();
 }
 
+void Bureaucrat::signForm(Form& f)
+{
+	try
+	{
+		f.beSigned(*this);
+		std::cout << this->name << " signed " << f.getName() << "." << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << this->name << " couldn't sign " << f.getName() << " because: " << e.what() << std::endl;
+	}
+}
+
 /*
 ** ----------------------- EXCEPTION CLASS(ES) -----------------------
 */
@@ -113,6 +124,7 @@ const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
 	return("\033[31;1mGrade too Low.\033[0m");
 }
+
 /*
 ** ----------------------- FUNCS -----------------------
 */

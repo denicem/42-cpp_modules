@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 16:19:11 by dmontema          #+#    #+#             */
-/*   Updated: 2022/08/06 19:04:13 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/08/07 18:44:45 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,12 @@ int main()
 {
 	try
 	{
-
-		Bureaucrat b("FABIBI", 0);
-		// Bureaucrat b("FABIBI", 160);
-
-		// Bureaucrat b ("FABIBI", 2);
+		Bureaucrat b("FABIBI", 5);
 		// b.incGrade();
-		// b.incGrade();
-		// std::cout << b << std::endl;
-
-		// Bureaucrat b("FABIBI", 148);
-		// b.decGrade();
-		// b.decGrade();
-		// b.decGrade();
-		// std::cout << b << std::endl;
+		// Form f("Tabletennis application form", 0, 4);
+		// Form f("Tabletennis application form", 4, 179);
+		Form f("Tabletennis application form", 4, 4);
+		b.signForm(f);
 	}
 	catch (std::exception& e)
 	{

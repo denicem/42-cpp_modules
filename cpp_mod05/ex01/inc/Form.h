@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 19:16:16 by dmontema          #+#    #+#             */
-/*   Updated: 2022/08/06 20:20:05 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/08/07 18:06:56 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,13 @@
 
 #include <string>
 
+class Bureaucrat;
+
 class Form
 {
 private:
 	const std::string name;
-	bool signed;
+	bool sig;
 	const int gradeSign;
 	const int gradeExec;
 
@@ -29,12 +31,13 @@ public:
 	Form();
 	Form(const Form&);
 	Form(const std::string);
+	Form(const std::string, const int, const int);
 	~Form();
 
 	Form& operator=(const Form&);
 
 	std::string getName() const;
-	bool getSigned() const;
+	bool getSig() const;
 	int getGradeSign() const;
 	int getGradeExec() const;
 

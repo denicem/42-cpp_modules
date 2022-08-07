@@ -6,14 +6,18 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 20:36:30 by dmontema          #+#    #+#             */
-/*   Updated: 2022/08/06 19:03:35 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/08/07 18:36:04 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_H
 #define BUREAUCRAT_H
 
+#include "Form.h"
+
 #include <string>
+
+class Form;
 
 class Bureaucrat
 {
@@ -35,6 +39,7 @@ public:
 
 	void incGrade();
 	void decGrade();
+	void signForm(Form&);
 
 	class GradeTooHighException: public std::exception
 	{
