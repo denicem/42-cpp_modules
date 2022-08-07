@@ -37,6 +37,7 @@ Ice::Ice(std::string const & type): AMateria(type)
 	std::cout << "Ice created.\n";
 }
 
+
 Ice::~Ice()
 {
 	std::cout << "Ice destroyed.\n";

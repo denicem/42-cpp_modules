@@ -31,6 +31,7 @@ Brain::Brain(const Brain &other)
 	std::cout << "Brain created (Copy).\n";
 }
 
+
 Brain::~Brain()
 {
 	std::cout << "Brain destroyed.\n";
@@ -51,10 +52,6 @@ Brain& Brain::operator=(const Brain &other)
 }
 
 /*
-** ----------------------- METHODS -----------------------
-*/
-
-/*
 ** ----------------------- GETTER AND SETTER METHODS -----------------------
 */
 
@@ -70,7 +67,3 @@ void Brain::setIdea(unsigned index, std::string idea)
 	if (index < 100)
 		this->ideas[index] = idea;
 }
-
-/*
-** ----------------------- FUNCS -----------------------
-*/

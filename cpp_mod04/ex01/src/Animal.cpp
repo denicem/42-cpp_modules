@@ -28,6 +28,8 @@ Animal::Animal(const Animal &other)
 	*this = other;
 	std::cout << "Animal created (Copy).\n";
 }
+
+
 Animal::~Animal()
 {
 	std::cout << "Animal destroyed.\n";
@@ -69,6 +71,3 @@ void Animal::setType(std::string type)
 	this->type = type;
 }
 
-/*
-** ----------------------- FUNCS -----------------------
-*/

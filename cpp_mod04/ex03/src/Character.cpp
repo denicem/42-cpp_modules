@@ -34,6 +34,7 @@ Character::Character(const Character& other)
 	std::cout << "Character " << this->name << " created (Copy).\n";
 }
 
+
 Character::~Character()
 {
 	std::cout << "Character " << this->name << " destroyed.\n";

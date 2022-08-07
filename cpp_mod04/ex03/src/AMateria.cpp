@@ -35,6 +35,7 @@ AMateria::AMateria(std::string const & type): type(type)
 	std::cout << "Materia created.\n";
 }
 
+
 AMateria::~AMateria()
 {
 	std::cout << "Materia destroyed.\n";

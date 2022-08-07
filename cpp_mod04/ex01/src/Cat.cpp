@@ -31,6 +31,8 @@ Cat::Cat(const Cat &other): Animal(other)
 	this->brain = new Brain(*other.brain);
 	std::cout << "Cat created (Copy).\n";
 }
+
+
 Cat::~Cat()
 {
 	delete this->brain;
@@ -77,6 +79,3 @@ void Cat::setBrain(unsigned index, std::string idea)
 		this->brain->setIdea(index, idea);
 }
 
-/*
-** ----------------------- FUNCS -----------------------
-*/

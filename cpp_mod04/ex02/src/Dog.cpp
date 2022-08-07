@@ -31,6 +31,8 @@ Dog::Dog(const Dog &other): Animal(other)
 	this->brain = new Brain(*other.brain);
 	std::cout << "Dog created (Copy).\n";
 }
+
+
 Dog::~Dog()
 {
 	delete this->brain;
@@ -77,6 +79,3 @@ void Dog::setBrain(unsigned index, std::string idea)
 		this->brain->setIdea(index, idea);
 }
 
-/*
-** ----------------------- FUNCS -----------------------
-*/

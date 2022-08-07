@@ -37,6 +37,7 @@ Cure::Cure(std::string const & type): AMateria(type)
 	std::cout << "Cure created.\n";
 }
 
+
 Cure::~Cure()
 {
 	std::cout << "Cure destroyed.\n";

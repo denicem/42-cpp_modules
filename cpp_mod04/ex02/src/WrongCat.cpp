@@ -29,6 +29,8 @@ WrongCat::WrongCat(const WrongCat &other): WrongAnimal(other)
 	*this = other;
 	std::cout << "WrongCat created (Copy).\n";
 }
+
+
 WrongCat::~WrongCat()
 {
 	std::cout << "WrongCat destroyed.\n";
@@ -55,11 +57,3 @@ void WrongCat::makeSound() const
 {
 	std::cout << "Meoooww ..\n";
 }
-
-/*
-** ----------------------- GETTER AND SETTER METHODS -----------------------
-*/
-
-/*
-** ----------------------- FUNCS -----------------------
-*/

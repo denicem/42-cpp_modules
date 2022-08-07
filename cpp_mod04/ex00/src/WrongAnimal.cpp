@@ -28,6 +28,8 @@ WrongAnimal::WrongAnimal(const WrongAnimal &other)
 	*this = other;
 	std::cout << "WrongAnimal created (Copy).\n";
 }
+
+
 WrongAnimal::~WrongAnimal()
 {
 	std::cout << "WrongAnimal destroyed.\n";
@@ -69,6 +71,3 @@ void WrongAnimal::setType(std::string type)
 	this->type = type;
 }
 
-/*
-** ----------------------- FUNCS -----------------------
-*/

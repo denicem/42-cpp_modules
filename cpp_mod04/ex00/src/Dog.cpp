@@ -29,6 +29,8 @@ Dog::Dog(const Dog &other): Animal(other)
 	*this = other;
 	std::cout << "Dog created (Copy).\n";
 }
+
+
 Dog::~Dog()
 {
 	std::cout << "Dog destroyed.\n";
@@ -56,10 +58,3 @@ void Dog::makeSound() const
 	std::cout << "🐶 Woof, woof...\n";
 }
 
-/*
-** ----------------------- GETTER AND SETTER METHODS -----------------------
-*/
-
-/*
-** ----------------------- FUNCS -----------------------
-*/

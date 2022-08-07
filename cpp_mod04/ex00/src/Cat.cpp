@@ -29,6 +29,8 @@ Cat::Cat(const Cat &other): Animal(other)
 	*this = other;
 	std::cout << "Cat created (Copy).\n";
 }
+
+
 Cat::~Cat()
 {
 	std::cout << "Cat destroyed.\n";
@@ -56,10 +58,3 @@ void Cat::makeSound() const
 	std::cout << "🐱 Meoooww ..\n";
 }
 
-/*
-** ----------------------- GETTER AND SETTER METHODS -----------------------
-*/
-
-/*
-** ----------------------- FUNCS -----------------------
-*/

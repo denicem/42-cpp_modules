@@ -47,6 +47,7 @@ Bureaucrat::Bureaucrat(const std::string name, int grade): name(name), grade(gra
 	std::cout << "Bureaucrat " << this->name <<  " created (str, int).\n";
 }
 
+
 Bureaucrat::~Bureaucrat()
 {
 	std::cout << "Bureaucrat " << this->name <<  " destroyed.\n";

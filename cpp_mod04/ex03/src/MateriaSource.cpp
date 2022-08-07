@@ -31,6 +31,7 @@ MateriaSource::MateriaSource(const MateriaSource& other)
 	std::cout << "MateriaSource created (Copy).\n";
 }
 
+
 MateriaSource::~MateriaSource()
 {
 	for (int i = 0; i < 4; i++)
