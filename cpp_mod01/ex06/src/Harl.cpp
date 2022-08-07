@@ -17,53 +17,50 @@ Harl::Harl() {}
 
 void Harl::debug()
 {
+	std::cout << CYAN << "[DEBUG]" << RESET << std::endl;
 	std::cout << "I love having extra bacon for my 7XL-double-cheese-triple-pickle-specialketchup burger. I really do!\n";
 }
 
 void Harl::info()
 {
+	std::cout << BLUE << "[INFO]" << RESET << std::endl;
 	std::cout << "I cannot believe adding extra bacon costs more money. You didn’t put enough bacon in my burger! If you did, I wouldn’t be asking for more!\n";
 }
 
 void Harl::warning()
 {
+	std::cout << YELLOW << "[WARNING]" << RESET << std::endl;
 	std::cout << "I think I deserve to have some extra bacon for free. I’ve been coming for years whereas you started working here since last month.\n";
 }
 
 void Harl::error()
 {
+	std::cout << RED << "[ERROR]" << RESET << std::endl;
 	std::cout << "This is unacceptable! I want to speak to the manager now.\n";
 }
 
 void Harl::complain(std::string level)
 {
-	void (Harl::*func[])() = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+	int opt = 0;
 	std::string lvl[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-	int nLevel = 0;
+	void (Harl::*func[])() = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 
-	for (; nLevel < 4; nLevel++)
+	while (opt < 4 && level != lvl[opt])
+		opt++;
+
+	switch (opt)
 	{
-		if (!lvl[nLevel].compare(level))
+		case DEBUG:
+			(this->*func[opt++])();
+		case INFO:
+			(this->*func[opt++])();
+		case WARNING:
+			(this->*func[opt++])();
+		case ERROR:
+			(this->*func[opt++])();
 			break ;
+		default:
+			std::cout << MAGENTA << "[Probably complaining about insignificant problems]" << RESET << std::endl;
+			break;
 	}
-	switch (nLevel)
-	{
-	case 0:
-		std::cout << "[DEBUG]\n";
-		(this->*func[nLevel++])();
-	case 1:
-		std::cout << "[INFO]\n";
-		(this->*func[nLevel++])();
-	case 2:
-		std::cout << "[WARNING]\n";
-		(this->*func[nLevel++])();
-	case 3:
-		std::cout << "[ERROR]\n";
-		(this->*func[nLevel++])();
-		break ;
-	default:
-		std::cout << "[Probably complaining about insignificant problems]\n";
-		break;
-	}
-	
 }

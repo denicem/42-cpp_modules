@@ -13,6 +13,12 @@
 #ifndef HARL_H
 #define HARL_H
 
+#define RED		"\033[31;1m"
+#define YELLOW	"\033[33;1m"
+#define BLUE	"\033[34;1m"
+#define CYAN	"\033[36;1m"
+#define RESET	"\033[0m"
+
 #include <string>
 
 class Harl
