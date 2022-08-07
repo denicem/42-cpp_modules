@@ -10,23 +10,32 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= account
+NAME	=	Account
 
-INCS		=	-I./inc/
-SRCS		=	src/Account.cpp src/tests.cpp
+SRC_DIR	=	./src
+SRCS	=	$(shell find $(SRC_DIR) -name "*.cpp" -execdir echo {} ";")
 
-OBJS		=	$(SRCS:.cpp=.o)
+OBJ_DIR	=	./obj
+OBJS	=	$(addprefix $(OBJ_DIR)/, $(SRCS:.cpp=.o))
+
+DEPS	=	$(OBJS:.o=.d)
 
 CC		=	c++
 CFLAGS	=	-Wall -Wextra -Werror -std=c++98
 
-# COLOURS
-RED		=	\033[0;31m
-GREEN	=	\033[0;32m
-YELLOW	=	\033[0;33m
-BLUE	=	\033[0;34m
-CYAN	=	\033[0;36m
-RESET	=	\033[m
+# FORMATTING CODES
+BOLD	= \033[1m
+BLACK	= \033[30;1m
+RED		= \033[31;1m
+GREEN	= \033[32;1m
+YELLOW	= \033[33;1m
+BLUE	= \033[34;1m
+MAGENTA	= \033[35;1m
+CYAN	= \033[36;1m
+WHITE	= \033[37;1m
+RESET	= \033[0m
+SPACE	= \e[50C
+
 
 # **************************************************************************** #
 #	RULES																	   #
@@ -34,19 +43,31 @@ RESET	=	\033[m
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	@printf "$(CYAN)Installing Account Manager...$(RESET)\n"
-	@$(CC) $(CFLAGS) $(INCS) $(OBJS) -o $(NAME)
-	@printf "$(GREEN)\tCOMPLETE!$(RESET)\n"
+-include $(DEPS)
 
-.cpp.o:
-	@$(CC) $(CFLAGS) $(INCS) -c $< -o $(<:.cpp=.o)
+$(NAME): $(OBJS)
+	@printf "$(BLUE)Linking objects to a binary file$(RESET)\r"
+	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	@printf "$(SPACE)$(GREEN)[✓]\n$(RESET)"
+	@echo "\t\t$(GREEN)$(BOLD)COMPLETE!$(RESET)\n"
+	@echo "\t\t$(MAGENTA)Name of executable: $(NAME)$(RESET)\n"
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | prep
+	@printf "$(BLUE)$(BOLD)\rCompiling: $(CYAN)$(notdir $<)\r"
+	@$(CC) $(CFLAGS) -MMD -MP -c $< -o $@
+	@printf "$(SPACE)$(GREEN)[✓]\n$(RESET)"
+
+prep:
+	@mkdir -p $(OBJ_DIR)
 
 clean:
-	@rm -f $(OBJS)
-	@printf "$(GREEN)Cleaning done.$(RESET)\n"
+	@printf "$(MAGENTA)Removing object files...\r$(RESET)"
+	@rm -rf $(OBJS) $(OBJ_DIR)
+	@printf "$(SPACE)$(GREEN)[✓]\n$(RESET)"
 
 fclean: clean
-	@rm -f $(NAME)
+	@printf "$(MAGENTA)Removing binary file...\r$(RESET)"
+	@rm -rf $(NAME)
+	@printf "$(SPACE)$(GREEN)[✓]\n$(RESET)\n"
 
 re: fclean all

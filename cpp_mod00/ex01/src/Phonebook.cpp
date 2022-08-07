@@ -15,7 +15,6 @@
 
 #include <iostream>
 #include <iomanip>
-#include <array>
 
 bool Phonebook::contactExist(int index)
 {

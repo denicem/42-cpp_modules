@@ -34,7 +34,7 @@ MAGENTA	= \033[35;1m
 CYAN	= \033[36;1m
 WHITE	= \033[37;1m
 RESET	= \033[0m
-SPACE	=	\e[50C
+SPACE	= \e[50C
 
 
 # **************************************************************************** #
@@ -63,11 +63,11 @@ prep:
 clean:
 	@printf "$(MAGENTA)Removing object files...\r$(RESET)"
 	@rm -rf $(OBJS) $(OBJ_DIR)
-	@printf "\e[50C$(GREEN)[✓]\n$(RESET)"
+	@printf "$(SPACE)$(GREEN)[✓]\n$(RESET)"
 
 fclean: clean
 	@printf "$(MAGENTA)Removing binary file...\r$(RESET)"
 	@rm -rf $(NAME)
-	@printf "\e[50C$(GREEN)[✓]\n$(RESET)\n"
+	@printf "$(SPACE)$(GREEN)[✓]\n$(RESET)\n"
 
 re: fclean all
