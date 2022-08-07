@@ -11,18 +11,22 @@
 /* ************************************************************************** */
 
 #include "../inc/Fixed.h"
+
 #include <iostream>
 #include <cmath>
+
+/*
+** ----------------------- CONSTRUCTORS & DESTRUCTOR -----------------------
+*/
 
 Fixed::Fixed(): val(0)
 {
 	// std::cout << "Default constructor called.\n";
 }
 
-Fixed::Fixed(const Fixed& other)
+Fixed::Fixed(const Fixed& other): val(other.val)
 {
 	// std::cout << "Copy constructor called.\n";
-	*this = other;
 }
 
 Fixed::Fixed(const int nb)
@@ -37,51 +41,57 @@ Fixed::Fixed(const float nb)
 	this->val = roundf(nb * (1 << this->fract_bits));
 }
 
+
 Fixed::~Fixed()
 {
 	// std::cout << "Destructor called.\n";
 }
 
-/////////////////////////////////////////////
+/*
+** ----------------------- OPERATOR OVERLOADS -----------------------
+*/
 
-Fixed& Fixed::operator=(const Fixed &other)
+Fixed& Fixed::operator=(const Fixed& other)
 {
 	// std::cout << "Copy assignment operator called.\n";
-	this->val = other.getRawBits();
+	if (this != &other)
+		this->val = other.getRawBits();
 	return (*this);
 }
 
-bool Fixed::operator==(const Fixed &other) const
+
+bool Fixed::operator==(const Fixed& other) const
 {
 	return (this->val == other.getRawBits());
 }
 
-bool Fixed::operator!=(const Fixed &other) const
+bool Fixed::operator!=(const Fixed& other) const
 {
 	return (this->val != other.getRawBits());
 }
 
-bool Fixed::operator<(const Fixed &other) const
+bool Fixed::operator<(const Fixed& other) const
 {
 	return (this->val < other.getRawBits());
 }
 
-bool Fixed::operator<=(const Fixed &other) const
+bool Fixed::operator<=(const Fixed& other) const
 {
 	return (this->val <= other.getRawBits());
 }
 
-bool Fixed::operator>(const Fixed &other) const
+bool Fixed::operator>(const Fixed& other) const
 {
 	return (this->val > other.getRawBits());
 }
 
-bool Fixed::operator>=(const Fixed &other) const
+bool Fixed::operator>=(const Fixed& other) const
 {
 	return (this->val >= other.getRawBits());
 }
 
-Fixed Fixed::operator+(const Fixed &other)
+
+Fixed Fixed::operator+(const Fixed& other)
 {
 	int res;
 	Fixed tmp;
@@ -91,7 +101,7 @@ Fixed Fixed::operator+(const Fixed &other)
 	return (tmp);
 }
 
-Fixed Fixed::operator-(const Fixed &other)
+Fixed Fixed::operator-(const Fixed& other)
 {
 	int res;
 	Fixed tmp;
@@ -101,7 +111,7 @@ Fixed Fixed::operator-(const Fixed &other)
 	return (tmp);
 }
 
-Fixed Fixed::operator*(const Fixed &other)
+Fixed Fixed::operator*(const Fixed& other)
 {
 	int res;
 	Fixed tmp;
@@ -111,7 +121,7 @@ Fixed Fixed::operator*(const Fixed &other)
 	return (tmp);
 }
 
-Fixed Fixed::operator/(const Fixed &other)
+Fixed Fixed::operator/(const Fixed& other)
 {
 	int res;
 	Fixed tmp;
@@ -120,6 +130,7 @@ Fixed Fixed::operator/(const Fixed &other)
 	tmp.setRawBits(res);
 	return (tmp);
 }
+
 
 Fixed& Fixed::operator++()
 {
@@ -149,24 +160,9 @@ Fixed Fixed::operator--(int)
 	return (tmp);
 }
 
-/////////////////////////////////////////////
-
-float Fixed::toFloat() const
-{
-	return (static_cast<float>(this->val / static_cast<float>(1 << this->fract_bits)));
-}
-
-int Fixed::toInt() const
-{
-	return (this->val >> fract_bits);
-}
-
-/////////////////////////////////////////////
-
-void Fixed::setRawBits(const int raw)
-{
-	this->val = raw;
-}
+/*
+** ----------------------- GETTER AND SETTER METHODS -----------------------
+*/
 
 int Fixed::getRawBits() const
 {
@@ -174,9 +170,30 @@ int Fixed::getRawBits() const
 	return (this->val);
 }
 
-/////////////////////////////////////////////
+void Fixed::setRawBits(const int raw)
+{
+	this->val = raw;
+}
 
-Fixed& Fixed::min(Fixed &fp1, Fixed &fp2)
+/*
+** ----------------------- METHODS -----------------------
+*/
+
+int Fixed::toInt() const
+{
+	return (this->val >> fract_bits);
+}
+
+float Fixed::toFloat() const
+{
+	return (static_cast<float>(this->val / static_cast<float>(1 << this->fract_bits)));
+}
+
+/*
+** ----------------------- CLASS METHODS -----------------------
+*/
+
+Fixed& Fixed::min(Fixed& fp1, Fixed& fp2)
 {
 	return (fp1 < fp2 ? fp1 : fp2);
 }
@@ -186,7 +203,7 @@ const Fixed& Fixed::min(const Fixed& fp1, const Fixed& fp2)
 	return (static_cast<Fixed>(fp1) < static_cast<Fixed>(fp2) ? fp1 : fp2);
 }
 
-Fixed& Fixed::max(Fixed &fp1, Fixed &fp2)
+Fixed& Fixed::max(Fixed& fp1, Fixed& fp2)
 {
 	return (fp1 > fp2 ? fp1 : fp2);
 }
@@ -196,9 +213,11 @@ const Fixed& Fixed::max(const Fixed& fp1, const Fixed& fp2)
 	return (static_cast<Fixed>(fp1) > static_cast<Fixed>(fp2) ? fp1 : fp2);
 }
 
-/////////////////////////////////////////////
+/*
+** ----------------------- FUNCS -----------------------
+*/
 
-std::ostream& operator<<(std::ostream& stream, const Fixed &fp)
+std::ostream& operator<<(std::ostream& stream, const Fixed& fp)
 {
 	stream << fp.toFloat();
 	return (stream);

@@ -23,18 +23,18 @@ private:
 
 public:
 	Fixed();
-	Fixed(const Fixed &);
+	Fixed(const Fixed&);
 	Fixed(const int);
 	Fixed(const float);
 	~Fixed();
 
 	Fixed& operator=(const Fixed&);
 
-	float toFloat() const;
-	int toInt() const;
-
 	int getRawBits() const;
 	void setRawBits(const int raw);
+
+	int toInt() const;
+	float toFloat() const;
 };
 
 std::ostream& operator<<(std::ostream&, const Fixed&);

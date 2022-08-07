@@ -11,7 +11,12 @@
 /* ************************************************************************** */
 
 #include "../inc/Fixed.h"
+
 #include <iostream>
+
+/*
+** ----------------------- CONSTRUCTORS & DESTRUCTOR -----------------------
+*/
 
 Fixed::Fixed()
 {
@@ -19,23 +24,32 @@ Fixed::Fixed()
 	this->val = 0;
 }
 
-Fixed::Fixed(Fixed& other)
+Fixed::Fixed(const Fixed& other): val(other.val)
 {
 	std::cout << "Copy constructor called.\n";
-	*this = other;
 }
+
 
 Fixed::~Fixed()
 {
 	std::cout << "Destructor called.\n";
 }
 
-Fixed & Fixed::operator=(const Fixed &other)
+/*
+** ----------------------- OPERATOR OVERLOADS -----------------------
+*/
+
+Fixed& Fixed::operator=(const Fixed& other)
 {
 	std::cout << "Copy assignment operator called.\n";
-	this->val = other.getRawBits();
+	if (this != &other)
+		this->val = other.getRawBits();
 	return (*this);
 }
+
+/*
+** ----------------------- GETTER AND SETTER METHODS -----------------------
+*/
 
 void Fixed::setRawBits(int const raw)
 {

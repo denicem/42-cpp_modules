@@ -21,12 +21,12 @@ private:
 
 public:
 	Fixed();
-	Fixed(Fixed &);
+	Fixed(const Fixed&);
 	~Fixed();
-	Fixed &operator=(const Fixed &);
+	Fixed &operator=(const Fixed&);
 
-	void setRawBits(int const raw);
 	int getRawBits() const;
+	void setRawBits(int const raw);
 };
 
 #endif

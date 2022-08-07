@@ -23,7 +23,7 @@ private:
 
 public:
 	Fixed();
-	Fixed(const Fixed &);
+	Fixed(const Fixed&);
 	Fixed(const int);
 	Fixed(const float);
 	~Fixed();
@@ -44,16 +44,16 @@ public:
 	Fixed& operator--();
 	Fixed operator--(int);
 
-	float toFloat() const;
-	int toInt() const;
-
-	void setRawBits(int const raw);
 	int getRawBits() const;
+	void setRawBits(int const raw);
+
+	int toInt() const;
+	float toFloat() const;
 
 	static Fixed& min(Fixed&, Fixed&);
-	static const Fixed &min(const Fixed&, const Fixed&);
+	static const Fixed& min(const Fixed&, const Fixed&);
 	static Fixed& max(Fixed&, Fixed&);
-	static const Fixed &max(const Fixed&, const Fixed&);
+	static const Fixed& max(const Fixed&, const Fixed&);
 };
 
 std::ostream& operator<<(std::ostream&, const Fixed&);

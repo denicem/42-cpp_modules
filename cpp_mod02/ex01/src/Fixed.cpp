@@ -11,18 +11,22 @@
 /* ************************************************************************** */
 
 #include "../inc/Fixed.h"
+
 #include <iostream>
 #include <cmath>
+
+/*
+** ----------------------- CONSTRUCTORS & DESTRUCTOR -----------------------
+*/
 
 Fixed::Fixed(): val(0)
 {
 	std::cout << "Default constructor called.\n";
 }
 
-Fixed::Fixed(const Fixed &other)
+Fixed::Fixed(const Fixed& other): val(other.val)
 {
 	std::cout << "Copy constructor called.\n";
-	*this = other;
 }
 
 Fixed::Fixed(const int nb)
@@ -37,32 +41,27 @@ Fixed::Fixed(const float nb)
 	this->val = roundf(nb * (1 << this->fract_bits));
 }
 
+
 Fixed::~Fixed()
 {
 	std::cout << "Destructor called.\n";
 }
 
-Fixed& Fixed::operator=(const Fixed &other)
+/*
+** ----------------------- OPERATOR OVERLOADS -----------------------
+*/
+
+Fixed& Fixed::operator=(const Fixed& other)
 {
 	std::cout << "Copy assignment operator called.\n";
-	this->val = other.getRawBits();
+	if (this != &other)
+		this->val = other.getRawBits();
 	return (*this);
 }
 
-float Fixed::toFloat() const
-{
-	return (static_cast<float>(this->val) / static_cast<float>(1 << this->fract_bits));
-}
-
-int Fixed::toInt() const
-{
-	return (this->val >> fract_bits);
-}
-
-void Fixed::setRawBits(const int raw)
-{
-	this->val = raw;
-}
+/*
+** ----------------------- GETTER AND SETTER METHODS -----------------------
+*/
 
 int Fixed::getRawBits() const
 {
@@ -70,8 +69,31 @@ int Fixed::getRawBits() const
 	return (this->val);
 }
 
-std::ostream& operator<<(std::ostream& stream, const Fixed &f)
+void Fixed::setRawBits(const int raw)
 {
-	stream << f.toFloat();
+	this->val = raw;
+}
+
+/*
+** ----------------------- METHODS -----------------------
+*/
+
+int Fixed::toInt() const
+{
+	return (this->val >> fract_bits);
+}
+
+float Fixed::toFloat() const
+{
+	return (static_cast<float>(this->val) / static_cast<float>(1 << this->fract_bits));
+}
+
+/*
+** ----------------------- FUNCS -----------------------
+*/
+
+std::ostream& operator<<(std::ostream& stream, const Fixed& fp)
+{
+	stream << fp.toFloat();
 	return (stream);
 }
