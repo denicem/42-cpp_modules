@@ -17,6 +17,7 @@
 #include "../inc/PresidentialPardonForm.h"
 
 #include <string>
+#include <iostream>
 
 /*
 ** ----------------------- CONSTRUCTORS & DESTRUCTOR -----------------------
@@ -43,23 +44,28 @@ Intern& Intern::operator=(const Intern& other)
 
 AForm* Intern::makeForm(std::string form, std::string target)
 {
+	AForm* res;
 	std::string forms[] = {"shrubbery creation", "robotomy request", "presidential pardon"};
 	int opt = 0;
 
-	for (; opt < 3; opt++)
-		if (form == forms[opt])
-			break ;
+	for (; opt < 3 && form != forms[opt]; opt++);
+
 	switch (opt)
 	{
-	case SHRUBBERYCREATION:
-		return (new ShrubberyCreationForm(target));
-	case ROBOTOMYREQUEST:
-		return (new RobotomyRequestForm(target));
-	case PRESIDENTIALPARDON:
-		return (new PresidentialPardonForm(target));
-	default:
-		throw FormNotFoundException();
+		case SHRUBBERYCREATION:
+			res = new ShrubberyCreationForm(target);
+			break ;
+		case ROBOTOMYREQUEST:
+			res = new RobotomyRequestForm(target);
+			break ;
+		case PRESIDENTIALPARDON:
+			res = new PresidentialPardonForm(target);
+			break ;
+		default:
+			throw FormNotFoundException();
 	}
+	std::cout << "Intern creates " << form << "." << std::endl;
+	return (res);
 }
 
 /*
