@@ -18,8 +18,9 @@ int main()
 {
 	try
 	{
-
-		Bureaucrat b("FABIBI", 0);
+		Bureaucrat b("FABIBI", 42);
+		std::cout << b << std::endl;
+		// Bureaucrat b("FABIBI", 0);
 		// Bureaucrat b("FABIBI", 160);
 
 		// Bureaucrat b ("FABIBI", 2);

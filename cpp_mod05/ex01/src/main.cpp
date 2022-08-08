@@ -20,9 +20,10 @@ int main()
 	{
 		Bureaucrat b("FABIBI", 5);
 		// b.incGrade();
+		Form f("Tabletennis application form", 4, 4);
+		std::cout << b << std::endl << f << std::endl;
 		// Form f("Tabletennis application form", 0, 4);
 		// Form f("Tabletennis application form", 4, 179);
-		Form f("Tabletennis application form", 4, 4);
 		b.signForm(f);
 	}
 	catch (std::exception& e)
