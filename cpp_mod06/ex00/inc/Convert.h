@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/08 19:20:48 by dmontema          #+#    #+#             */
-/*   Updated: 2022/08/08 23:04:54 by dmontema         ###   ########.fr       */
+/*   Created: 2022/08/09 17:17:47 by dmontema          #+#    #+#             */
+/*   Updated: 2022/08/09 19:20:34 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,36 +14,39 @@
 #define CONVERT_H
 
 #include <string>
+#include <iostream>
 
 class Convert
 {
 private:
-	enum type {NO_TYPE = -1, CHAR_TYPE, INT_TYPE, FLOAT_TYPE, DOUBLE_TYPE};
-
 	std::string input;
-	type _type;
-	char char_val;
-	int int_val;
-	float float_val;
-	double double_val;
-	bool determined, converted;
+	double val;
+
+	Convert();
+
+	bool isCharType() const;
+	bool isFloatType() const;
+	bool isDoubleType() const;
+
+	void setVal();
 
 public:
-	Convert();
 	Convert(const Convert&);
 	Convert(std::string);
 	~Convert();
 
 	Convert& operator=(const Convert&);
 
-	void determineType();
-	void convertType();
-	void printType() const;
-	
+	double getVal() const;
+
+	bool isPseudoLiteral() const;
+
 	class NotValidArgumentException: public std::exception
 	{
 		const char* what() const throw();
 	};
 };
+
+std::ostream& operator<<(std::ostream&, const Convert&);
 
 #endif

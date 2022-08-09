@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 19:21:34 by dmontema          #+#    #+#             */
-/*   Updated: 2022/08/08 23:38:25 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/08/09 19:20:50 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,22 @@
 
 #include <string>
 #include <iostream>
+#include <limits>
+#include <iomanip>
 
 /*
 ** ----------------------- CONSTRUCTORS & DESTRUCTOR -----------------------
 */
 
-Convert::Convert(): input("undefined"), _type(NO_TYPE) {}
-Convert::Convert(const Convert& other): input(other.input), _type(other._type) {}
-Convert::Convert(std::string input): input(input), _type(NO_TYPE) {}
+Convert::Convert(): input("undefined") {}
+Convert::Convert(const Convert& other): input(other.input), val(other.val)
+{
+	this->setVal();
+}
+Convert::Convert(std::string input): input(input)
+{
+	this->setVal();
+}
 
 Convert::~Convert() {}
 
@@ -33,65 +41,75 @@ Convert& Convert::operator=(const Convert& other)
 {
 	if (this != &other)
 	{
+		this->val = other.val;
 		this->input = other.input;
-		this->_type = other._type;
-		this->determined = other.determined;
-		this->converted = other.determined;
 	}
 	return (*this);
+}
+
+/*
+** ----------------------- GETTER AND SETTER METHODS -----------------------
+*/
+
+double Convert::getVal() const
+{
+	return (this->val);
+}
+
+void Convert::setVal()
+{
+	if (this->isCharType())
+		this->val = static_cast<double>(this->input[0]);
+	else
+		this->val = std::strtod(input.c_str(), NULL);
 }
 
 /*
 ** ----------------------- METHODS -----------------------
 */
 
-void Convert::determineType()
+bool Convert::isCharType() const
 {
-	if (this->input.length() == 1 && !std::isdigit(this->input[0]))
+	if (this->input.length() == 1 && std::isalpha(this->input[0]))
+		return (true);
+	int i = 0;
+	if (this->input[0] == '+' || this->input[0] == '-')
+		i++;
+	if (!isFloatType() && !isDoubleType() && !isPseudoLiteral())
 	{
-		this->_type = CHAR_TYPE;
-		return ;
+		for (; this->input[i]; i++)
+			if (!std::isdigit(this->input[i]))
+				throw NotValidArgumentException();
 	}
-	int pos = this->input.find('.', 0);
-	if (pos != std::string::npos)
-	{
-		if (this->input.find('.',  pos + 1) != std::string::npos)
-			throw NotValidArgumentException();
-		if (this->input.find('f', 0) + 1 == this->input.length())
-		{
-			this->input = FLOAT_TYPE;
-			return ;
-		}
-	}
+	return (false);
 }
 
-void Convert::convertType()
+bool Convert::isFloatType() const
 {
-	switch (this->_type)
-	{
-	case CHAR_TYPE:
-		this->char_val = this->input[0];
-		this->int_val = static_cast<int>(this->char_val);
-		this->float_val = static_cast<float>(this->char_val);
-		this->double_val = static_cast<double>(this->char_val);
-		break;
-	default:
-		break;
-	}
+	if (!isDoubleType())
+		return (false);
+	std::string::size_type pos = this->input.find('f');
+	if (pos == std::string::npos)
+		return (false);
+	if (pos + 1 != this->input.length() && pos >= 3)
+		return (false);
+	return (true);
 }
 
-void Convert::printType() const
+bool Convert::isDoubleType() const
 {
-	
-	std::cout << "char: ";
-	if (std::isprint(this->char_val))
-		std::cout << "\'" << this->char_val << "\'" << std::endl;
-	else
-		std::cout << "Non displayable" << std::endl;
-	
-	std::cout << "int: " << this->int_val << std::endl;
-	std::cout << "float: " << std::fixed <<  this->float_val << "f" << std::endl;
-	std::cout << "double: " << std::fixed <<  this->double_val << std::endl;
+	std::string::size_type pos = this->input.find('.');
+	if (pos == std::string::npos || this->input.find('.', pos + 1) != std::string::npos)
+		return (false);
+	return (true);
+}
+
+bool Convert::isPseudoLiteral() const
+{
+	if (this->input == "inf" || this->input == "+inf" || this->input == "-inf" || this->input == "nan" || 
+		this->input == "inff" || this->input == "+inff" || this->input == "-inff" || this->input == "nanf")
+		return (true);
+	return (false);
 }
 
 /*
@@ -101,4 +119,39 @@ void Convert::printType() const
 const char* Convert::NotValidArgumentException::what() const throw()
 {
 	return ("\033[31;1mInvalid argument.\033[0m");
+}
+
+/*
+** ----------------------- FUNCS -----------------------
+*/
+
+std::ostream& operator<<(std::ostream& stream, const Convert& conv)
+{
+	double val = conv.getVal();
+
+	// CHAR
+	stream << "char: ";
+	if (val < 0.0 || val > 255.0 || conv.isPseudoLiteral())
+		stream << "Impossible." << std::endl;
+	else if (!std::isprint(static_cast<int>(val)))
+		stream << "Non displayable." << std::endl;
+	else
+		stream << "\'" << static_cast<char>(val) << "\'" << std::endl;
+	
+	// INT
+	stream << "int: ";
+	if (val < static_cast<double>(INT_MIN) || val > static_cast<double>(INT_MAX) || conv.isPseudoLiteral())
+		stream << "Impossible." << std::endl;
+	else
+		stream << static_cast<int>(val) << std::endl;
+	
+	// FLOAT
+	stream << "float: ";
+	stream << std::fixed << std::setprecision(2) << static_cast<float>(val) << "f" << std::endl;
+
+	// DOUBLE
+	stream << "double: ";
+	stream << std::fixed << std::setprecision(2) << val << std::endl;
+
+	return (stream);
 }
