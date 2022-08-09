@@ -15,6 +15,8 @@
 
 #include "Data.h"
 
+#include <stdint.h>
+
 uintptr_t serialize(Data* ptr);
 Data* deserialize(uintptr_t raw);
 

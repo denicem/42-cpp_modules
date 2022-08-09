@@ -15,7 +15,7 @@
 
 #include <iostream>
 
-void func()
+int main()
 {
 	Data* d = new Data();
 	d->name = "DATA";
@@ -33,11 +33,5 @@ void func()
 	std::cout << d1 << std::endl;
 	
 	delete d1;
-}
-
-int main()
-{
-	func();
-	system("leaks serialization");
 	return (0);
 }
