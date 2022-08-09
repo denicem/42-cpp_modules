@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 20:08:19 by dmontema          #+#    #+#             */
-/*   Updated: 2022/08/07 21:26:36 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/08/09 22:06:03 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 #include <iostream>
 #include <cstdlib>
+#include <time.h>
 
 /*
 ** ----------------------- CONSTRUCTORS & DESTRUCTOR -----------------------
@@ -53,7 +54,8 @@ void RobotomyRequestForm::execute(const Bureaucrat& executer) const
 {
 	if (!this->isExecutable(executer))
 		throw GradeTooLowException();
-	int nbr = rand() % 10;
+	srand(time(0));
+	int nbr = rand() % 10 + 1;
 	if (nbr % 2 == 0)
 		std::cout << this->target << " has been succesfully robotomized." << std::endl;
 	else
