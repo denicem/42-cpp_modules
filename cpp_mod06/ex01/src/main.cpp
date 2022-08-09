@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 20:53:08 by dmontema          #+#    #+#             */
-/*   Updated: 2022/08/09 21:11:05 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/08/09 21:16:24 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include <iostream>
 
-int main()
+void func()
 {
 	Data* d = new Data();
 	d->name = "DATA";
@@ -31,6 +31,13 @@ int main()
 
 	std::cout << d1->name << ": " << d1->nbr << std::endl;
 	std::cout << d1 << std::endl;
+	
+	delete d1;
+}
 
+int main()
+{
+	func();
+	system("leaks serialization");
 	return (0);
 }
