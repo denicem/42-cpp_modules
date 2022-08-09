@@ -48,7 +48,7 @@ public:
 	Array& operator[](unsigned int idx)
 	{
 		if (!this->arr[idx])
-			throw exception();
+			throw std::out_of_range("Index out of range.");
 		return (this->arr[idx]);
 	}
 
