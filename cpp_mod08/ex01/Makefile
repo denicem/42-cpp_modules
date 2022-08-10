@@ -37,8 +37,8 @@ $(NAME): $(OBJS)
 	@printf "$(BLUE)Linking objects to a binary file$(RESET)\r"
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 	@printf "$(SPACE)$(GREEN)[✓]\n$(RESET)"
-	@echo "\t\t$(GREEN)$(BOLD)COMPLETE!$(RESET)\n"
-	@echo "\t\t$(MAGENTA)Name of executable: $(NAME)$(RESET)\n"
+	@printf "\t\t$(GREEN)$(BOLD)COMPLETE!$(RESET)\n\n"
+	@printf "\t\t$(MAGENTA)Name of executable: $(NAME)$(RESET)\n\n"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | prep
 	@printf "$(BLUE)$(BOLD)\rCompiling: $(CYAN)$(notdir $<)\r"
