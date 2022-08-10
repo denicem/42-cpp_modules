@@ -14,7 +14,9 @@
 
 #include <string>
 #include <iostream>
+#include <cstdlib>
 #include <limits>
+#include <climits>
 #include <iomanip>
 
 /*
@@ -61,7 +63,7 @@ void Convert::setVal()
 	if (this->isCharType())
 		this->val = static_cast<double>(this->input[0]);
 	else
-		this->val = std::strtod(input.c_str(), NULL);
+		this->val = atof(input.c_str());
 }
 
 /*

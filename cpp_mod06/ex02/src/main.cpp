@@ -32,11 +32,11 @@ Base* generate()
 
 void identify(Base* p)
 {
-	if (dynamic_cast<A*>(p) != nullptr)
+	if (dynamic_cast<A*>(p) != NULL)
 		std::cout << "Class A was created." << std::endl;
-	else if (dynamic_cast<B*>(p) != nullptr)
+	else if (dynamic_cast<B*>(p) != NULL)
 		std::cout << "Class B was created." << std::endl;
-	else if (dynamic_cast<C*>(p) != nullptr)
+	else if (dynamic_cast<C*>(p) != NULL)
 		std::cout << "Class C was created." << std::endl;
 }
 
