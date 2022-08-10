@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 04:34:23 by dmontema          #+#    #+#             */
-/*   Updated: 2022/08/10 16:47:09 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/08/11 00:08:32 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,10 @@ class NotFoundException: public std::exception
 template<typename T>
 T easyfind(std::vector<T>& t, int i)
 {
-	for (typename std::vector<T>::iterator it = t.begin(); it != t.end(); it++)
-	{
-		if (*it == i)
-			return (*it);
-	}
-	throw NotFoundException();
+	typename std::vector<T>::iterator element = std::find(t.begin(), t.end(), i);
+	if (element == t.end())
+		throw NotFoundException();
+	return (*element);
 }
 
 #endif
