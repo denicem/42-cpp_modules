@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 17:08:56 by dmontema          #+#    #+#             */
-/*   Updated: 2022/08/10 22:29:34 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/08/12 14:07:56 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,8 @@ int Span::shortestSpan() const
 
 int Span::longestSpan() const
 {
+	if (this->nbrs.size() < 2)
+		throw SpanTooSmallException();
 	std::vector<int>::const_iterator max = std::max_element(this->nbrs.begin(), this->nbrs.end());
 	std::vector<int>::const_iterator min = std::min_element(this->nbrs.begin(), this->nbrs.end());
 	return (*max - *min);
