@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 18:05:53 by dmontema          #+#    #+#             */
-/*   Updated: 2022/08/10 22:30:04 by dmontema         ###   ########.fr       */
+/*   Updated: 2022/08/13 18:00:30 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,6 @@
 
 #include <iostream>
 #include <algorithm>
-
-void print(int i)
-{
-	std::cout << i << std::endl;
-}
 
 int main()
 {
@@ -34,27 +29,37 @@ int main()
 
 	std::cout << sp << std::endl;
 
-	// try
-	// {
-	// 	sp.addNumber(42);
-	// }
-	// catch(const std::exception& e)
-	// {
-	// 	std::cerr << e.what() << '\n';
-	// }
+	try
+	{
+		sp.addNumber(42);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 
-	// try
-	// {
-	// 	Span sp1 = Span(3);
-	// 	// sp1.addNumber(42);
-	// 	// std::cout << sp1.shortestSpan() << std::endl;
-	// 	std::cout << sp1.longestSpan() << std::endl;
-	// }
-	// catch(const std::exception& e)
-	// {
-	// 	std::cerr << e.what() << '\n';
-	// }
+	try
+	{
+		sp.getNbr(7);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 
+	try
+	{
+		Span sp1 = Span(3);
+		// sp1.addNumber(42);
+		// std::cout << sp1.shortestSpan() << std::endl;
+		std::cout << sp1.longestSpan() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+
+	// TEST second addNumber method
 	// Span sp2 = sp;
 	// std::cout << sp2 << std::endl;
 
