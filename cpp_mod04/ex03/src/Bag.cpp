@@ -1,18 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   MateriaSource.cpp                                  :+:      :+:    :+:   */
+/*   Bag.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/05 13:50:34 by dmontema          #+#    #+#             */
-/*   Updated: 2023/01/13 17:46:14 by dmontema         ###   ########.fr       */
+/*   Created: 2023/01/13 17:58:25 by dmontema          #+#    #+#             */
+/*   Updated: 2023/01/13 17:58:50 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/MateriaSource.h"
-#include "../inc/Ice.h"
-#include "../inc/Cure.h"
+#include "../inc/Bag.h"
 
 #include <iostream>
 
@@ -20,35 +18,35 @@
 ** ----------------------- CONSTRUCTORS & DESTRUCTOR -----------------------
 */
 
-MateriaSource::MateriaSource()
+Bag::Bag()
 {
-	std::cout << "MaterieSource created (Default).\n";
+	std::cout << "Bag created (Default).\n";
 }
 
-MateriaSource::MateriaSource(const MateriaSource& other)
+Bag::Bag(const Bag& other)
 {
 	*this = other;
-	std::cout << "MateriaSource created (Copy).\n";
+	std::cout << "Bag created (Copy).\n";
 }
 
 
-MateriaSource::~MateriaSource()
+Bag::~Bag()
 {
 	for (int i = 0; i < 4; i++)
-		if (this->inv[i])
-			delete this->inv[i];
-	std::cout << "MateriaSource destroyed.\n";
+		if (this->materia[i])
+			delete this->materia[i];
+	std::cout << "Bag destroyed.\n";
 }
 
 /*
 ** ----------------------- OPERATOR OVERLOADS -----------------------
 */
 
-MateriaSource& MateriaSource::operator=(const MateriaSource& other)
+Bag& Bag::operator=(const Bag& other)
 {
 	if (this != &other)
 		for (int i = 0; i < 4; i++)
-			this->inv[i] = other.inv[i];
+			this->materia[i] = other.materia[i];
 	return (*this);
 }
 
@@ -56,22 +54,14 @@ MateriaSource& MateriaSource::operator=(const MateriaSource& other)
 ** ----------------------- METHODS -----------------------
 */
 
-void MateriaSource::learnMateria(AMateria* mat)
+void Bag::addMateria(AMateria* mat)
 {
 	for (int i = 0; i < 4; i++)
 	{
-		if (!this->inv[i])
+		if (!this->materia[i])
 		{
-			this->inv[i] = mat;
+			this->materia[i] = mat;
 			return ;
 		}
 	}
-}
-
-AMateria* MateriaSource::createMateria(std::string const & type)
-{
-	for (int i = 0; i < 4; i++)
-		if (this->inv[i] && this->inv[i]->getType() == type)
-			return (this->inv[i]->clone());
-	return (0);
 }

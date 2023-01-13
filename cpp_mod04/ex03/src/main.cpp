@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 03:01:01 by dmontema          #+#    #+#             */
-/*   Updated: 2022/08/05 17:42:46 by dmontema         ###   ########.fr       */
+/*   Updated: 2023/01/13 18:08:08 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "../inc/Ice.h"
 #include "../inc/Cure.h"
 #include "../inc/MateriaSource.h"
+#include "../inc/Bag.h"
 
 #include <iostream>
 

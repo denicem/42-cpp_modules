@@ -6,11 +6,12 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 18:01:53 by dmontema          #+#    #+#             */
-/*   Updated: 2022/08/05 18:26:35 by dmontema         ###   ########.fr       */
+/*   Updated: 2023/01/13 18:07:53 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Character.h"
+#include "../inc/Bag.h"
 
 #include <iostream>
 
@@ -37,6 +38,9 @@ Character::Character(const Character& other)
 
 Character::~Character()
 {
+	for (int i = 0; i < 4; i++)
+		if (this->inv[i])
+			delete this->inv[i];
 	std::cout << "Character " << this->name << " destroyed.\n";
 }
 
@@ -74,7 +78,10 @@ void Character::equip(AMateria *m)
 void Character::unequip(int idx)
 {
 	if (idx >= 0 && idx < 4)
+	{
+		this->bag.addMateria(this->inv[idx]);
 		this->inv[idx] = 0;
+	}
 }
 
 void Character::use(int idx, ICharacter& target)

@@ -6,7 +6,7 @@
 /*   By: dmontema <dmontema@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 17:05:09 by dmontema          #+#    #+#             */
-/*   Updated: 2022/08/05 17:17:20 by dmontema         ###   ########.fr       */
+/*   Updated: 2023/01/13 18:01:05 by dmontema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include "ICharacter.h"
 #include "AMateria.h"
+#include "Bag.h"
 
 #include <string>
 
@@ -23,6 +24,7 @@ class Character: public ICharacter
 protected:
 	std::string name;
 	AMateria* inv[4];
+	Bag bag;
 
 public:
 	Character();
